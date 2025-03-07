@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Controllers.SignUpController">
+    <children>
+        <AnchorPane prefHeight="900.0" prefWidth="1023.0" style="-fx-background-color: #030317;">
+            <children>
+                <ImageView fitHeight="831.0" fitWidth="706.0" layoutX="47.0" layoutY="66.0" pickOnBounds="true" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+                    <image>
+                        <Image url="@../../../Images/LoginImage.jpg" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="900.0" prefWidth="1092.0" style="-fx-background-color: #030317;">
+            <children>
+                <Label alignment="CENTER" layoutX="122.0" layoutY="100.0" prefHeight="96.0" prefWidth="490.0" text="Create an account" textFill="WHITE" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="60.0">
+                    <font>
+                        <Font name="Montserrat Bold" size="50.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="251.0" layoutY="200.0" text="Create an account to access the platform" textFill="#bfbfbf" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="150.0">
+                    <font>
+                        <Font name="Montserrat Regular" size="20.0" />
+                    </font>
+                </Label>
+            <Label fx:id="errorMessageLabel" alignment="CENTER" layoutX="204.0" layoutY="186.0" textFill="RED">
+               <font>
+                  <Font name="Montserrat Regular" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="249.0" layoutY="191.0" text="Account Type" textFill="WHITE" AnchorPane.leftAnchor="252.0" AnchorPane.topAnchor="220.0">
+               <font>
+                  <Font name="Montserrat Regular" size="20.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="accountTypeChoice" layoutX="252.0" layoutY="233.0" prefHeight="57.0" prefWidth="320.0" style="-fx-background-color: #1f2229; -fx-border-radius: 10px; -fx-background-radius: 10px; -fx-border-color: gray; -fx-text-fill: white;" AnchorPane.leftAnchor="252.0" AnchorPane.topAnchor="260.0" />
+                <Label layoutX="129.0" layoutY="264.0" text="First Name" textFill="WHITE" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="340.0">
+                    <font>
+                        <Font name="Montserrat Regular" size="20.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="firstNameField" layoutX="129.0" layoutY="304.0" prefHeight="59.0" prefWidth="637.0" promptText="Enter first name" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white;" stylesheets="@../../../Styles/styles.css" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="420.0" AnchorPane.topAnchor="380.0">
+                    <font>
+                        <Font name="Montserrat Regular" size="20.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="217.0" layoutY="335.0" text="Last Name" textFill="WHITE" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="340.0">
+                    <font>
+                        <Font name="Montserrat Regular" size="20.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="lastNameField" layoutX="217.0" layoutY="375.0" prefHeight="59.0" prefWidth="637.0" promptText="Enter last name" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white;" stylesheets="@../../../Styles/styles.css" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="380.0">
+                    <font>
+                        <Font name="Montserrat Regular" size="20.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="113.0" layoutY="224.0" text="Email" textFill="WHITE" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="618.5" AnchorPane.topAnchor="470.0">
+                    <font>
+                        <Font name="Montserrat Regular" size="20.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="emailField" layoutX="546.0" layoutY="260.0" prefHeight="59.0" prefWidth="637.0" promptText="Enter email address" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white;" stylesheets="@../../../Styles/styles.css" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="510.0">
+                    <font>
+                        <Font name="Montserrat Regular" size="20.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="121.0" layoutY="398.0" text="Password" textFill="WHITE" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="590.0">
+                    <font>
+                        <Font name="Montserrat Regular" size="20.0" />
+                    </font>
+                </Label>
+            <PasswordField fx:id="passwordField" layoutX="334.0" layoutY="564.0" prefHeight="56.0" prefWidth="351.0" promptText="Enter password" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white;" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="630.0">
+               <font>
+                  <Font name="Montserrat Regular" size="20.0" />
+               </font>
+            </PasswordField>
+                <Button fx:id="signUpButton" layoutX="100.0" layoutY="537.0" mnemonicParsing="false" onAction="#signUpOnAction" prefHeight="49.0" prefWidth="364.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to right, #05D6D9 , #F907FC);" text="Create an account" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="730.0">
+                    <font>
+                        <Font name="Montserrat Regular" size="20.0" />
+                    </font>
+                </Button>
+                <TextFlow layoutX="255.0" layoutY="734.0" prefHeight="29.0" prefWidth="376.0" textAlignment="CENTER" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="800.0">
+                    <children>
+                        <Text fill="#bfbfbf" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account ? " wrappingWidth="203.2227783203125">
+                            <font>
+                                <Font name="Montserrat Regular" size="20.0" />
+                            </font>
+                        </Text>
+                        <Text fx:id="loginPageLink" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log in" underline="true" wrappingWidth="150.357177734375">
+                            <font>
+                                <Font name="Work Sans" size="20.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </TextFlow>
+            </children>
+        </AnchorPane>
+    </children>
+</HBox>

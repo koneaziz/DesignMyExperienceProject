@@ -1,4 +1,4 @@
-package com.aa.designmyexperience.Controllers.Customers;
+package com.aa.designmyexperience.Controllers;
 
 public class CustomersController {
 }

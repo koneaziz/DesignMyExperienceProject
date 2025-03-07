@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="230.0" prefWidth="200.0" style="-fx-background-radius: 30px; -fx-border-radius: 30px; -fx-background-color: #03031785;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Controllers.SearchCardController">
+   <children>
+      <ImageView fitHeight="115.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: red;" />
+      <Label layoutX="14.0" layoutY="125.0" prefHeight="22.0" prefWidth="113.0" text="Activity Name" textFill="WHITE" AnchorPane.leftAnchor="14.0">
+         <font>
+            <Font name="Montserrat Black" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="148.0" prefHeight="22.0" prefWidth="57.0" text="Location" textFill="WHITE" AnchorPane.leftAnchor="14.0">
+         <font>
+            <Font name="Montserrat Regular" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="9.0" layoutY="182.0" prefHeight="22.0" prefWidth="12.0" text="£" textFill="WHITE" AnchorPane.leftAnchor="14.0">
+         <font>
+            <Font name="Montserrat Black" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="182.0" prefHeight="22.0" prefWidth="44.0" text="Price" textFill="WHITE">
+         <font>
+            <Font name="Montserrat Black" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="163.0" prefHeight="22.0" prefWidth="38.0" text="Date" textFill="WHITE" AnchorPane.leftAnchor="14.0">
+         <font>
+            <Font name="Montserrat Regular" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

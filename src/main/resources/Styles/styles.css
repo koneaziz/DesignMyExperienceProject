@@ -1,3 +1,78 @@
 #signInButton {
     -fx-background-radius: 40px;
 }
+
+.profil_pane:hover {
+    -fx-border-color: white;
+    -fx-border-width: 0 0 3px 0;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color:   #5645ee;
+}
+.date-picker .arrow-button:hover {
+    -fx-background-color:  #5645ee80;
+}
+.date-picker .arrow-button .arrow {
+    -fx-background-color: white;
+}
+.date-picker .cell {
+    -fx-background-color:  #1f2229;
+    -fx-text-fill: white;
+}
+.date-picker .cell:hover {
+    -fx-background-color:  #1f222980;
+}
+.date-picker .cell:focused {
+    -fx-background-color:  #1f222980;
+}
+.date-picker .selected {
+    -fx-background-color:  #1f2229;
+    -fx-text-fill: white;
+}
+.date-picker .selected:focused {
+    -fx-background-color:  #1f2229;
+    -fx-text-fill: white;
+}
+.date-picker-popup  {
+    -fx-border-color: transparent;
+}
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #5645ee;
+}
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: white;
+}
+
+.date-picker-popup .week-number-cell {
+    -fx-text-fill: #1f2229;
+}
+
+.date-picker-popup .spinner .button .left-arrow,
+.date-picker-popup .spinner .button .right-arrow {
+    -fx-background-color: white;
+}
+
+.date-picker .text-field {
+    -fx-background-color: #1f2229;
+    -fx-text-fill: white;
+
+}
+
+.date-picker {
+    -fx-border-color: none;
+}
+
+.cardCont:hover {
+    -fx-background-color: #1f222980;
+}
+
+.categoryCard{
+    -fx-background-color: #1f2229;
+    -fx-background-radius: 30px;
+}
+
+.categoryCard:hover {
+    -fx-background-color: #1f221840;
+}
+

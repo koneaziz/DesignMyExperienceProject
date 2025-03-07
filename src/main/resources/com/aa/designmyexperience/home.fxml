@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane hbarPolicy="NEVER" hmin="1.0" prefHeight="1597.0" prefWidth="1602.0" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Controllers.HomeController">
+   <content>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1800.0" prefWidth="1600.0" style="-fx-background-color: #030317;">
+         <children>
+            <HBox prefHeight="89.0" prefWidth="1600.0">
+               <children>
+                  <AnchorPane prefHeight="154.0" prefWidth="315.0">
+                     <children>
+                        <ImageView fitHeight="148.0" fitWidth="172.0" layoutX="86.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/LogoDesignMyExperience.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="151.0" prefWidth="788.0">
+                     <children>
+                        <TextField fx:id="searchField" layoutX="145.0" layoutY="42.0" prefHeight="59.0" prefWidth="582.0" promptText="Search" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white; -fx-background-image: url('/Images/search.png');" stylesheets="@../../../Styles/styles.css">
+                           <font>
+                              <Font name="Montserrat Regular" size="20.0" />
+                           </font>
+                        </TextField>
+                        <Button layoutX="673.0" layoutY="41.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="62.0" style="-fx-background-color: #5645ee; -fx-background-radius: 0 10 10 0;" textFill="#5645ee">
+                           <graphic>
+                              <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Images/search.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="151.0" prefWidth="484.0" style="" stylesheets="@../../../Styles/styles.css">
+                     <children>
+                        <ButtonBar layoutX="162.0" layoutY="-4.0" prefHeight="158.0" prefWidth="274.0" styleClass="profil_pane" stylesheets="@../../../Styles/styles.css">
+                           <buttons>
+                              <Label fx:id="fnameLabel" alignment="CENTER_RIGHT" prefHeight="28.0" text="First" textFill="WHITE">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lnameLabel" alignment="TOP_LEFT" minWidth="48.0" prefHeight="28.0" prefWidth="110.0" text="Last" textFill="WHITE">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Circle fx:id="profilPicture" fill="#5645ee" radius="47.0" stroke="BLACK" strokeType="INSIDE" />
+                           </buttons>
+                        </ButtonBar>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <AnchorPane prefHeight="318.0" prefWidth="1600.0" style="-fx-background-color: white;">
+               <children>
+                  <ImageView fitHeight="322.0" fitWidth="1603.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/DesignMyExperienceBanner.jpg" />
+                     </image></ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane>
+               <children>
+                  <Label prefHeight="37.0" prefWidth="315.0" text="Trending Activities" textFill="WHITE" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font name="Montserrat Black" size="30.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane hbarPolicy="NEVER" layoutY="115.0" prefHeight="242.0" prefWidth="1600.0" style="-fx-background-color: #030317;" vbarPolicy="NEVER" vmax="0.0">
+                     <content>
+                        <HBox fx:id="trendingContainer" prefHeight="246.0" prefWidth="1609.0" spacing="30.0" style="-fx-background-color: #030317;">
+                           <padding>
+                              <Insets left="50.0" right="50.0" />
+                           </padding>
+                        </HBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane>
+               <children>
+                  <Label prefHeight="37.0" prefWidth="252.0" text="Search by date" textFill="WHITE" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font name="Montserrat Black" size="30.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="datePicker" layoutX="1240.0" layoutY="36.0" onAction="#datePickerOnAction" prefHeight="51.0" prefWidth="252.0" promptText="Search Date" showWeekNumbers="false" stylesheets="@../../../Styles/styles.css" AnchorPane.leftAnchor="1240.0" AnchorPane.topAnchor="36.0" />
+                  <ScrollPane hbarPolicy="NEVER" layoutY="112.0" prefHeight="237.0" prefWidth="1600.0" style="-fx-background-color: #030317;" vbarPolicy="NEVER" vmax="0.0">
+                     <content>
+                        <HBox fx:id="dateEventContainer" prefHeight="305.0" prefWidth="1609.0" spacing="20.0" style="-fx-background-color: #030317;">
+                           <padding>
+                              <Insets left="50.0" right="50.0" />
+                           </padding>
+                        </HBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="486.0">
+               <children>
+                  <Label prefHeight="37.0" prefWidth="182.0" text="Categories" textFill="WHITE" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font name="Montserrat Black" size="30.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane hbarPolicy="NEVER" layoutY="115.0" prefHeight="242.0" prefWidth="1600.0" style="-fx-background-color: #030317;" vbarPolicy="NEVER" vmax="0.0">
+                     <content>
+                        <HBox fx:id="trendingContainer1" prefHeight="246.0" prefWidth="1609.0" spacing="80.0" style="-fx-background-color: #030317;">
+                           <padding>
+                              <Insets left="50.0" right="50.0" />
+                           </padding>
+                           <children>
+                              <AnchorPane fx:id="restaurantCard" prefHeight="200.0" prefWidth="200.0" styleClass="categoryCard" stylesheets="@../../../Styles/styles.css">
+                                 <children>
+                                    <Text fill="WHITE" layoutX="27.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESTAURANTS" textAlignment="CENTER" wrappingWidth="177.50156021118164" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="133.73600006103516">
+                                       <font>
+                                          <Font name="Montserrat Black" size="22.0" />
+                                       </font>
+                                    </Text>
+                                    <FontAwesomeIconView fill="WHITE" glyphName="CUTLERY" layoutX="94.0" layoutY="83.0" selectionFill="#26a672" size="40" wrappingWidth="45.2750244140625" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="89.0" />
+                                 </children>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </AnchorPane>
+                              <AnchorPane fx:id="sportCard" layoutX="60.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" styleClass="categoryCard" stylesheets="@../../../Styles/styles.css">
+                                 <children>
+                                    <Text fill="WHITE" layoutX="27.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SPORTS" textAlignment="CENTER" wrappingWidth="177.50156021118164" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="133.73600006103516">
+                                       <font>
+                                          <Font name="Montserrat Black" size="23.0" />
+                                       </font>
+                                    </Text>
+                                    <FontAwesomeIconView fill="WHITE" glyphName="FUTBOL_ALT" layoutX="94.0" layoutY="83.0" selectionFill="#26a672" size="40" wrappingWidth="45.2750244140625" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="89.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="conferenceCard" layoutX="319.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" styleClass="categoryCard" stylesheets="@../../../Styles/styles.css">
+                                 <children>
+                                    <Text fill="WHITE" layoutX="21.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFERENCES" textAlignment="CENTER" wrappingWidth="184.47690200805664" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="134.0">
+                                       <font>
+                                          <Font name="Montserrat Black" size="23.0" />
+                                       </font>
+                                    </Text>
+                                    <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="94.0" layoutY="83.0" selectionFill="#26a672" size="40" wrappingWidth="45.2750244140625" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="89.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="culturalCard" layoutX="577.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" styleClass="categoryCard" stylesheets="@../../../Styles/styles.css">
+                                 <children>
+                                    <Text fill="WHITE" layoutX="26.0" layoutY="156.5" strokeType="OUTSIDE" strokeWidth="0.0" text="CULTURAL" textAlignment="CENTER" wrappingWidth="177.50156021118164" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="133.5">
+                                       <font>
+                                          <Font name="Montserrat Black" size="23.0" />
+                                       </font>
+                                    </Text>
+                                    <FontAwesomeIconView fill="WHITE" glyphName="UNIVERSITY" layoutX="94.0" layoutY="83.0" selectionFill="#26a672" size="40" wrappingWidth="45.2750244140625" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="89.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="entertainmentCard" layoutX="836.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" styleClass="categoryCard" stylesheets="@../../../Styles/styles.css">
+                                 <children>
+                                    <Text fill="WHITE" layoutX="6.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTERTAINMENT" textAlignment="CENTER" wrappingWidth="231.57162857055664" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="134.0">
+                                       <font>
+                                          <Font name="Montserrat Black" size="21.0" />
+                                       </font>
+                                    </Text>
+                                    <FontAwesomeIconView fill="WHITE" glyphName="GAMEPAD" layoutX="94.0" layoutY="83.0" selectionFill="#26a672" size="40" wrappingWidth="45.2750244140625" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="89.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

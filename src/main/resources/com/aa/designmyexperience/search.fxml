@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane hbarPolicy="NEVER" hmin="1.0" prefHeight="900.0" prefWidth="1600.0" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Controllers.HomeController">
+   <content>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1800.0" prefWidth="1600.0" style="-fx-background-color: #030317;">
+         <children>
+            <HBox prefHeight="89.0" prefWidth="1600.0">
+               <children>
+                  <AnchorPane prefHeight="154.0" prefWidth="315.0">
+                     <children>
+                        <ImageView fitHeight="148.0" fitWidth="172.0" layoutX="86.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/LogoDesignMyExperience.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="151.0" prefWidth="788.0" />
+                  <AnchorPane prefHeight="151.0" prefWidth="484.0" style="" stylesheets="@../../../Styles/styles.css">
+                     <children>
+                        <ButtonBar layoutX="162.0" layoutY="-4.0" prefHeight="158.0" prefWidth="274.0" styleClass="profil_pane" stylesheets="@../../../Styles/styles.css">
+                           <buttons>
+                              <Label fx:id="fnameLabel" alignment="CENTER_RIGHT" prefHeight="28.0" text="First" textFill="WHITE">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lnameLabel" alignment="TOP_LEFT" minWidth="48.0" prefHeight="28.0" prefWidth="110.0" text="Last" textFill="WHITE">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Circle fx:id="profilPicture" fill="#5645ee" radius="47.0" stroke="BLACK" strokeType="INSIDE" />
+                           </buttons>
+                        </ButtonBar>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <AnchorPane prefHeight="100.0" prefWidth="1600.0" style="-fx-background-color: #030317;">
+               <children>
+                  <AnchorPane layoutY="-3.0" prefHeight="157.0" prefWidth="1598.0">
+                     <children>
+                        <TextField fx:id="searchField1" layoutX="607.0" layoutY="48.0" prefHeight="59.0" prefWidth="806.0" promptText="Search" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white; -fx-background-image: url('/Images/search.png');" stylesheets="@../../../Styles/styles.css">
+                           <font>
+                              <Font name="Montserrat Regular" size="20.0" />
+                           </font>
+                        </TextField>
+                        <Button layoutX="1359.0" layoutY="47.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="62.0" style="-fx-background-color: #5645ee; -fx-background-radius: 0 10 10 0;" textFill="#5645ee">
+                           <graphic>
+                              <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Images/search.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="179.0" layoutY="40.0" text="Search" textFill="WHITE">
+                           <font>
+                              <Font name="Montserrat Black" size="59.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <HBox prefHeight="808.0" prefWidth="1600.0">
+               <children>
+                  <VBox prefHeight="1285.0" prefWidth="431.0" style="-fx-background-color: #03031760;">
+                     <children>
+                        <AnchorPane prefHeight="138.0" prefWidth="431.0">
+                           <children>
+                              <Label layoutX="148.0" layoutY="43.0" text="Filters" textFill="WHITE">
+                                 <font>
+                                    <Font name="Montserrat Bold" size="42.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="1149.0" prefWidth="431.0">
+                           <children>
+                              <Label layoutX="24.0" layoutY="36.0" text="Category" textFill="WHITE" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="36.0">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="23.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="categoryChoiceBox" layoutX="39.0" layoutY="78.0" prefHeight="26.0" prefWidth="373.0" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white;" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="78.0" />
+                              <Label layoutX="24.0" layoutY="163.0" text="Location" textFill="WHITE" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="163.0">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="23.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="locationChoiceBox" layoutX="24.0" layoutY="205.0" prefHeight="26.0" prefWidth="373.0" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white;" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="205.0" />
+                              <Label layoutX="34.0" layoutY="173.0" text="Price" textFill="WHITE" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="290.0">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="23.0" />
+                                 </font>
+                              </Label>
+                              <Slider layoutX="99.0" layoutY="353.0" max="500.0" prefHeight="16.0" prefWidth="373.0" showTickLabels="true" style="-fx-text-fill: white;" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="332.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <ScrollPane hbarPolicy="NEVER" hmax="0.0" prefHeight="1285.0" prefWidth="1172.0" style="-fx-background-color: #030317;" vbarPolicy="NEVER">
+                     <content>
+                        <HBox prefHeight="905.0" prefWidth="1170.0" style="-fx-background-color: #030317;" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

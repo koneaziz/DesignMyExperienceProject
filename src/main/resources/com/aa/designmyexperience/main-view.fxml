@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="487.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Main">
+   <children>
+      <ButtonBar layoutX="270.0" layoutY="224.0" prefHeight="40.0" prefWidth="200.0">
+        <buttons>
+          <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="189.0" text="Hello Test" textAlignment="CENTER" textFill="#171616" />
+        </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>
