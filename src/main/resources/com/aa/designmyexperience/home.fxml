@@ -54,23 +54,30 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="151.0" prefWidth="484.0" style="" stylesheets="@../../../Styles/styles.css">
+                  <AnchorPane prefHeight="154.0" prefWidth="498.0" style="" stylesheets="@../../../Styles/styles.css">
                      <children>
-                        <ButtonBar layoutX="162.0" layoutY="-4.0" prefHeight="158.0" prefWidth="274.0" styleClass="profil_pane" stylesheets="@../../../Styles/styles.css">
+                        <ButtonBar fx:id="profileButton" layoutX="136.0" layoutY="-4.0" prefHeight="158.0" prefWidth="340.0" styleClass="profil_pane" stylesheets="@../../../Styles/styles.css">
                            <buttons>
-                              <Label fx:id="fnameLabel" alignment="CENTER_RIGHT" prefHeight="28.0" text="First" textFill="WHITE">
-                                 <font>
-                                    <Font name="Montserrat Regular" size="22.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="lnameLabel" alignment="TOP_LEFT" minWidth="48.0" prefHeight="28.0" prefWidth="110.0" text="Last" textFill="WHITE">
-                                 <font>
-                                    <Font name="Montserrat Regular" size="22.0" />
-                                 </font>
-                              </Label>
-                              <Circle fx:id="profilPicture" fill="#5645ee" radius="47.0" stroke="BLACK" strokeType="INSIDE" />
-                           </buttons>
-                        </ButtonBar>
+                              <Button fx:id="profilePageButton" mnemonicParsing="false" onAction="#profilePageButtonOnAction" prefHeight="127.0" prefWidth="398.0" style="-fx-background-color: #030317;">
+                                 <graphic>
+                                    <Label fx:id="lnameLabel" alignment="TOP_LEFT" minWidth="48.0" prefHeight="94.0" prefWidth="223.0" text="Last" textFill="WHITE">
+                                       <font>
+                                          <Font name="Montserrat Regular" size="22.0" />
+                                       </font>
+                                       <graphic>
+                                          <Label fx:id="fnameLabel" alignment="CENTER_RIGHT" prefHeight="94.0" prefWidth="157.0" text="First" textFill="WHITE">
+                                             <font>
+                                                <Font name="Montserrat Regular" size="22.0" />
+                                             </font>
+                                             <graphic>
+                                                <Circle fx:id="profilPicture" fill="#5645ee" radius="47.0" stroke="BLACK" strokeType="INSIDE" />
+                                             </graphic>
+                                          </Label>
+                                       </graphic>
+                                    </Label>
+                                 </graphic>
+                              </Button>
+                           </buttons></ButtonBar>
                      </children>
                   </AnchorPane>
                </children>

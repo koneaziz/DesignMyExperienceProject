@@ -4,6 +4,7 @@ import com.aa.designmyexperience.Models.Event;
 import com.aa.designmyexperience.Models.Session;
 import com.aa.designmyexperience.Models.User;
 import com.aa.designmyexperience.Util.DBconnect;
+import com.aa.designmyexperience.Util.NavigationManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -142,5 +143,10 @@ public class HomeController {
             addAllEventToContainer(dateEventContainer);
         }
 
+    }
+
+    /* Go to the profile page */
+    public void profilePageButtonOnAction(ActionEvent actionEvent) throws IOException {
+        NavigationManager.navigate("profileCustomer.fxml");
     }
 }

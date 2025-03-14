@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #030317;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Controllers.ProfileController">
+    <!-- Header -->
+    <top>
+        <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #030317; -fx-padding: 10;">
+            <ImageView fitHeight="156.0" fitWidth="262.0" layoutX="86.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../../Images/LogoDesignMyExperience.png" />
+                </image>
+            <HBox.margin>
+               <Insets left="20.0" />
+            </HBox.margin>
+            </ImageView>
+            <HBox HBox.hgrow="ALWAYS" />
+            <Button fx:id="logoutButton" onAction="#logoutOnAction" prefHeight="51.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Logout">
+            <font>
+               <Font name="Montserrat Regular" size="21.0" />
+            </font>
+            <HBox.margin>
+               <Insets right="20.0" />
+            </HBox.margin>
+         </Button>
+        </HBox>
+    </top>
+
+    <!-- Main Content -->
+    <center>
+        <StackPane>
+            <!-- Background Image -->
+            <ImageView fx:id="backgroundImage" fitHeight="200.0" fitWidth="600.0" preserveRatio="false" />
+            <VBox alignment="CENTER" prefHeight="321.0" prefWidth="600.0" spacing="20.0">
+                <HBox alignment="CENTER" spacing="20.0">
+                    <!-- Profile Photo -->
+                    <ImageView fx:id="profileImage" fitHeight="250.0" fitWidth="268.0">
+                        <StackPane.margin>
+                            <Insets bottom="0.0" left="20.0" right="0.0" top="0.0" />
+                        </StackPane.margin>
+                    </ImageView>
+                    <!-- Profile Information -->
+                    <VBox alignment="CENTER_LEFT" prefHeight="250.0" prefWidth="399.0" spacing="5.0" style="-fx-background-color: #111126; -fx-padding: 10;">
+                        <Label fx:id="nameLabel" prefHeight="37.0" prefWidth="108.0" style="-fx-font-weight: bold; -fx-text-fill: white;" text="Name">
+                     <font>
+                        <Font name="Montserrat Regular" size="30.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin></Label>
+                        <Label style="-fx-text-fill: gray;" text="UserType">
+                     <font>
+                        <Font name="Montserrat Regular" size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin></Label>
+                        <Label fx:id="emailLabel" style="-fx-text-fill: white;" text="Email">
+                     <font>
+                        <Font name="Montserrat Regular" size="28.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                     </VBox.margin></Label>
+                    </VBox>
+                </HBox>
+
+                <!-- Buttons/Features -->
+                <HBox alignment="BOTTOM_CENTER" spacing="10.0">
+                    <Button fx:id="paymentButton" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Add/Modify Payment Method">
+                  <HBox.margin>
+                     <Insets right="50.0" />
+                  </HBox.margin>
+                  <font>
+                     <Font name="Montserrat Regular" size="17.0" />
+                  </font></Button>
+                    <Button fx:id="historyButton" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Booking History">
+                  <HBox.margin>
+                     <Insets right="50.0" />
+                  </HBox.margin>
+                  <font>
+                     <Font size="17.0" />
+                  </font></Button>
+                    <Button fx:id="editButton" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Edit Personal Information">
+                  <font>
+                     <Font name="Montserrat Regular" size="17.0" />
+                  </font></Button>
+               <padding>
+                  <Insets top="50.0" />
+               </padding>
+                </HBox>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>

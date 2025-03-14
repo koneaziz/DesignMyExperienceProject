@@ -3,6 +3,7 @@ module com.aa.designmyexperience {
     requires javafx.fxml;
     requires java.sql;
     requires javafx.web;
+    requires java.desktop;
 
 
     opens com.aa.designmyexperience to javafx.fxml;

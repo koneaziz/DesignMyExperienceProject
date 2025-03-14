@@ -75,7 +75,7 @@ public class DBconnect {
                 "'" + user.getUserType() + "', " +
                 "'" + user.getEmail() + "', " +
                 "'" + user.getPassword() + "', " +
-                (user.getPhoto() == null || user.getPhoto().isEmpty() ? "NULL" : "'" + user.getPhoto() + "'") + ", " +
+                "'" + user.getPhoto() + "', " +
                 "CURRENT_TIMESTAMP, CURRENT_TIMESTAMP" + ")";
 
         try (Connection conn = getConnection();
