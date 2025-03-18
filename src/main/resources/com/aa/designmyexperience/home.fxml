@@ -38,12 +38,12 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="151.0" prefWidth="788.0">
                      <children>
-                        <TextField fx:id="searchField" layoutX="145.0" layoutY="42.0" prefHeight="59.0" prefWidth="582.0" promptText="Search" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white; -fx-background-image: url('/Images/search.png');" stylesheets="@../../../Styles/styles.css">
+                        <TextField fx:id="searchField" layoutX="145.0" layoutY="42.0" onAction="#searchButtonOnAction" prefHeight="59.0" prefWidth="582.0" promptText="Search" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white; -fx-background-image: url('/Images/search.png');" stylesheets="@../../../Styles/styles.css">
                            <font>
                               <Font name="Montserrat Regular" size="20.0" />
                            </font>
                         </TextField>
-                        <Button layoutX="673.0" layoutY="41.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="62.0" style="-fx-background-color: #5645ee; -fx-background-radius: 0 10 10 0;" textFill="#5645ee">
+                        <Button fx:id="searchButton" layoutX="673.0" layoutY="41.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="60.0" prefWidth="62.0" style="-fx-background-color: #5645ee; -fx-background-radius: 0 10 10 0;" textFill="#5645ee">
                            <graphic>
                               <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

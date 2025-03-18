@@ -1,14 +1,24 @@
 package com.aa.designmyexperience.Controllers;
 
+import com.aa.designmyexperience.Models.Event;
 import com.aa.designmyexperience.Models.Session;
 import com.aa.designmyexperience.Models.User;
+import com.aa.designmyexperience.Util.DBconnect;
+import com.aa.designmyexperience.Util.NavigationManager;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
-import java.awt.*;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class SearchController {
 
@@ -19,10 +29,18 @@ public class SearchController {
     @FXML
     private Circle profilPicture;
     @FXML
-    private HBox searchContainer;
+    private TilePane searchContainer;
+    @FXML
+    private Button homeButton, searchButton;
+    @FXML
+    private TextField searchField;
+    @FXML
+    private ChoiceBox<String> categoryChoiceBox, locationChoiceBox;
+    @FXML
+    private Slider priceSlider;
 
     @FXML
-    private void initialize() {
+    private void initialize() throws SQLException {
         /* Get the session with the current user */
         Session session = Session.getInstance();
 
@@ -36,19 +54,90 @@ public class SearchController {
 
             fnameLabel.setText(user.getFirstName());
             lnameLabel.setText(user.getLastName());
-        } else {
-            fnameLabel.setText("Welcome, guest!");
         }
 
 
-
+        categoryChoiceBox.getItems().addAll(DBconnect.getCategories());
+        locationChoiceBox.getItems().addAll(DBconnect.getLocations());
 
     }
 
+    /* Trigger the search field */
+    @FXML
+    private void searchButtonOnAction(ActionEvent actionEvent) {
+        searchContainer.getChildren().clear();
+        addSearchEvent(searchContainer);
+
+    }
+
+    /* Go to the home page */
+    @FXML
+    private void homeButtonOnAction(ActionEvent event) throws IOException {
+        NavigationManager.navigate("home.fxml");
+    }
+
+    /* Go to the profile page */
+    @FXML
+    private void profilePageButtonOnAction(ActionEvent actionEvent) throws IOException {
+        NavigationManager.navigate("profileCustomer.fxml");
+    }
+
+    /* Add the event from the search */
+    public void addSearchEvent(TilePane hBox) {
+        try {
+            ArrayList<Event> events;
+            events = DBconnect.getEventsByName(searchField.getText());
+
+            for (Event event : events) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/aa/designmyexperience/search-card.fxml"));
+                Parent card = loader.load();
+                SearchCardController searchCardController = loader.getController();
+                searchCardController.setSearchEvent(event);
+                hBox.getChildren().add(card);
+            }
 
 
-    private void addSearchEvent(HBox hBox) {
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /* Add the event from the search and filters */
+    public void addSearchFilterEvent(TilePane hBox) {
+        try {
+            ArrayList<Event> events;
+            events = DBconnect.getEventsByFilters(searchField.getText(), categoryChoiceBox.getValue(),locationChoiceBox.getValue(), priceSlider.getValue());
+
+            for (Event event : events) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/aa/designmyexperience/search-card.fxml"));
+                Parent card = loader.load();
+                SearchCardController searchCardController = loader.getController();
+                searchCardController.setSearchEvent(event);
+                hBox.getChildren().add(card);
+            }
 
 
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /* Get the information from the precedent scene for the search text */
+    public void getSearchText(String search) {
+        searchField.setText(search);
+        addSearchEvent(searchContainer);
+    }
+
+    @FXML
+    /* Action to search the filters */
+    public void filterSearch(ActionEvent actionEvent) {
+        searchContainer.getChildren().clear();
+       addSearchFilterEvent(searchContainer);
     }
 }

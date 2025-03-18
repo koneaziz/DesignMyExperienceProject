@@ -20,6 +20,8 @@ public class ProfileController {
     @FXML
     private Label nameLabel;
     @FXML
+    private Label userTypeLabel;
+    @FXML
     private Label emailLabel;
     @FXML
     private ImageView profileImage;
@@ -49,6 +51,7 @@ public class ProfileController {
 
             nameLabel.setText(user.getFirstName() + " " + user.getLastName());
             emailLabel.setText(user.getEmail());
+            userTypeLabel.setText(user.getUserType());
         }
 
     }
@@ -58,5 +61,11 @@ public class ProfileController {
     private void logoutOnAction(ActionEvent e) throws IOException {
         Session.clearSession();
         NavigationManager.navigate("login.fxml");
+    }
+
+    /* Go back to the home page */
+    @FXML
+    public void homeButtonOnAction(ActionEvent e) throws IOException {
+        NavigationManager.navigate("home.fxml");
     }
 }

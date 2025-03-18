@@ -28,7 +28,7 @@ public class SearchCardController {
     DateFormat df = new SimpleDateFormat(pattern);
 
     /* We will set the Event informations */
-    public void setEvent(Event event) {
+    public void setSearchEvent(Event event) {
 
         EventNameLabel.setText(event.getEventTitle());
         CategoryLabel.setText(event.getEventCategory());

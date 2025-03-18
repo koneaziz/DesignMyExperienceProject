@@ -21,4 +21,9 @@ public class NavigationManager {
         Parent root = FXMLLoader.load(NavigationManager.class.getResource("/com/aa/designmyexperience/" + fxmlFile));
         primaryStage.getScene().setRoot(root);
     }
+
+    // Set the root
+    public static void setRoot(Parent root) throws IOException {
+        primaryStage.getScene().setRoot(root);
+    }
 }

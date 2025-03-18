@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.FlowPane;
@@ -47,6 +48,8 @@ public class HomeController {
     private HBox dateEventContainer;
     @FXML
     private DatePicker datePicker;
+    @FXML
+    private TextField searchField;
 
     @FXML
     private void initialize() {
@@ -148,5 +151,20 @@ public class HomeController {
     /* Go to the profile page */
     public void profilePageButtonOnAction(ActionEvent actionEvent) throws IOException {
         NavigationManager.navigate("profileCustomer.fxml");
+    }
+
+    /* Go to search page */
+    public void searchButtonOnAction(ActionEvent actionEvent) throws IOException {
+        String searchText = searchField.getText();
+
+        if (searchText != null && !searchText.isEmpty()) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/aa/designmyexperience/search.fxml"));
+            Parent searchRoot = loader.load();
+            SearchController searchController = loader.getController();
+            searchController.getSearchText(searchText);
+
+            NavigationManager.setRoot(searchRoot);
+
+        }
     }
 }

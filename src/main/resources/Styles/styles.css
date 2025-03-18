@@ -63,6 +63,15 @@
     -fx-border-color: none;
 }
 
+.searchCardCont {
+    -fx-background-color:  #111126;
+}
+
+.searchCardCont:hover {
+    -fx-background-color: #11112650;
+}
+
+
 .cardCont:hover {
     -fx-background-color: #1f222980;
 }
@@ -74,5 +83,9 @@
 
 .categoryCard:hover {
     -fx-background-color: #1f221840;
+}
+
+.choice-box .label {
+    -fx-text-fill: gray;
 }
 
