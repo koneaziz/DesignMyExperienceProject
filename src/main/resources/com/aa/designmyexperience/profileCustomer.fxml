@@ -15,24 +15,24 @@
     <!-- Header -->
     <top>
         <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #030317; -fx-padding: 10;">
-         <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButtonOnAction" prefHeight="165.0" prefWidth="219.0" style="-fx-background-color: #030317;">
-            <graphic>
-                  <ImageView fitHeight="156.0" fitWidth="262.0" pickOnBounds="true" preserveRatio="true">
-                      <image>
-                          <Image url="@../../../Images/LogoDesignMyExperience.png" />
-                      </image>
-                  </ImageView>
-            </graphic>
-         </Button>
+            <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButtonOnAction" prefHeight="165.0" prefWidth="219.0" style="-fx-background-color: #030317;">
+                <graphic>
+                    <ImageView fitHeight="156.0" fitWidth="262.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../Images/LogoDesignMyExperience.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
             <HBox HBox.hgrow="ALWAYS" />
             <Button fx:id="logoutButton" onAction="#logoutOnAction" prefHeight="51.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Logout">
-            <font>
-               <Font name="Montserrat Regular" size="21.0" />
-            </font>
-            <HBox.margin>
-               <Insets right="20.0" />
-            </HBox.margin>
-         </Button>
+                <font>
+                    <Font name="Montserrat Regular" size="21.0" />
+                </font>
+                <HBox.margin>
+                    <Insets right="20.0" />
+                </HBox.margin>
+            </Button>
         </HBox>
     </top>
 
@@ -52,52 +52,52 @@
                     <!-- Profile Information -->
                     <VBox alignment="CENTER_LEFT" prefHeight="250.0" prefWidth="399.0" spacing="5.0" style="-fx-background-color: #111126; -fx-padding: 10;">
                         <Label fx:id="nameLabel" prefHeight="37.0" prefWidth="108.0" style="-fx-font-weight: bold; -fx-text-fill: white;" text="Name">
-                     <font>
-                        <Font name="Montserrat Regular" size="30.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="20.0" />
-                     </VBox.margin></Label>
+                            <font>
+                                <Font name="Montserrat Regular" size="30.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="20.0" />
+                            </VBox.margin></Label>
                         <Label fx:id="userTypeLabel" style="-fx-text-fill: gray;" text="UserType">
-                     <font>
-                        <Font name="Montserrat Regular" size="17.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="20.0" />
-                     </VBox.margin></Label>
+                            <font>
+                                <Font name="Montserrat Regular" size="17.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="20.0" />
+                            </VBox.margin></Label>
                         <Label fx:id="emailLabel" style="-fx-text-fill: white;" text="Email">
-                     <font>
-                        <Font name="Montserrat Regular" size="28.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="20.0" top="20.0" />
-                     </VBox.margin></Label>
+                            <font>
+                                <Font name="Montserrat Regular" size="28.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="20.0" top="20.0" />
+                            </VBox.margin></Label>
                     </VBox>
                 </HBox>
 
                 <!-- Buttons/Features -->
                 <HBox alignment="BOTTOM_CENTER" spacing="10.0">
                     <Button fx:id="paymentButton" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Add/Modify Payment Method">
-                  <HBox.margin>
-                     <Insets right="50.0" />
-                  </HBox.margin>
-                  <font>
-                     <Font name="Montserrat Regular" size="17.0" />
-                  </font></Button>
+                        <HBox.margin>
+                            <Insets right="50.0" />
+                        </HBox.margin>
+                        <font>
+                            <Font name="Montserrat Regular" size="17.0" />
+                        </font></Button>
                     <Button fx:id="historyButton" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Booking History">
-                  <HBox.margin>
-                     <Insets right="50.0" />
-                  </HBox.margin>
-                  <font>
-                     <Font size="17.0" />
-                  </font></Button>
+                        <HBox.margin>
+                            <Insets right="50.0" />
+                        </HBox.margin>
+                        <font>
+                            <Font size="17.0" />
+                        </font></Button>
                     <Button fx:id="editButton" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Edit Personal Information">
-                  <font>
-                     <Font name="Montserrat Regular" size="17.0" />
-                  </font></Button>
-               <padding>
-                  <Insets top="50.0" />
-               </padding>
+                        <font>
+                            <Font name="Montserrat Regular" size="17.0" />
+                        </font></Button>
+                    <padding>
+                        <Insets top="50.0" />
+                    </padding>
                 </HBox>
             </VBox>
         </StackPane>
