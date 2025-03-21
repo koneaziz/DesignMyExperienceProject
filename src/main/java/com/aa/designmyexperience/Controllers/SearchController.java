@@ -79,7 +79,7 @@ public class SearchController {
     /* Go to the profile page */
     @FXML
     private void profilePageButtonOnAction(ActionEvent actionEvent) throws IOException {
-        NavigationManager.navigate("profileCustomer.fxml");
+        NavigationManager.profilePageButtonOnAction();
     }
 
     /* Add the event from the search */

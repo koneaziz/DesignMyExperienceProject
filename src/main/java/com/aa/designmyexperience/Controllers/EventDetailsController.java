@@ -143,6 +143,6 @@ public class EventDetailsController {
     @FXML
     /* Go to the profile page */
     public void profilePageButtonOnAction(ActionEvent actionEvent) throws IOException {
-        NavigationManager.navigate("profileCustomer.fxml");
+        NavigationManager.profilePageButtonOnAction();
     }
 }
