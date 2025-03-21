@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="card" maxHeight="200.0" prefHeight="200.0" prefWidth="400.0" style="-fx-border-radius: 20px; -fx-background-radius: 20px; -fx-background-color: #111126;" styleClass="cardCont" stylesheets="@../../../Styles/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Controllers.CardController">
+<AnchorPane fx:id="card" maxHeight="200.0" onMouseClicked="#handleCardClick" prefHeight="200.0" prefWidth="400.0" style="-fx-border-radius: 20px; -fx-background-radius: 20px; -fx-background-color: #111126;" styleClass="cardCont" stylesheets="@../../../Styles/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Controllers.CardController">
    <children>
       <HBox layoutY="-1.0" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: transparent;" styleClass="cardCont" stylesheets="@../../../Styles/styles.css">
          <children>

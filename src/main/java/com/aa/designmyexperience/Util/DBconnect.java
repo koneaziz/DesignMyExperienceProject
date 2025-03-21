@@ -65,6 +65,36 @@ public class DBconnect {
         }
     }
 
+    /* We will get the owner by the event */
+    public static User getUserByID(int idusers) throws SQLException {
+        String query = "SELECT * FROM users WHERE idusers = '" + idusers + "'";
+
+        try( Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet resultQuery = stmt.executeQuery(query) ) {
+
+            if (resultQuery.next()) {
+                int id = resultQuery.getInt("idusers");
+                String firstName = resultQuery.getString("fName");
+                String lastName = resultQuery.getString("lName");
+                String userType = resultQuery.getString("users_type");
+                String emailD = resultQuery.getString("email");
+                String password = resultQuery.getString("password");
+                String photo = resultQuery.getString("photo");
+
+                Timestamp tsCreated = resultQuery.getTimestamp("created_at");
+                Timestamp tsUpdated = resultQuery.getTimestamp("updated_at");
+                LocalDateTime createdAt = (tsCreated != null) ? tsCreated.toLocalDateTime() : null;
+                LocalDateTime updatedAt = (tsUpdated != null) ? tsUpdated.toLocalDateTime() : null;
+
+
+                return new User(id, firstName, lastName, userType, emailD, password, photo, createdAt, updatedAt);
+            }
+            return null;
+
+        }
+    }
+
 
     /* We will create a User in the Database */
     public static void createUser(User user) throws SQLException {
@@ -224,6 +254,34 @@ public class DBconnect {
         }
 
         return events;
+    }
+
+    /* We will get an event by its ID */
+    public static Event getEventById(int eventId) throws SQLException {
+        Event event = null;
+        String query = "SELECT * FROM events WHERE id_event = " + eventId;
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            if (rs.next()) {
+                event = new Event();
+                event.setEventId(rs.getInt("id_event"));
+                event.setEventOwner(rs.getInt("business_id"));
+                event.setEventTitle(rs.getString("title"));
+                event.setEventDescription(rs.getString("description"));
+                event.setEventDate(rs.getDate("event_date")); // Si besoin, adaptez pour un datetime
+                event.setEventLocation(rs.getString("location"));
+                event.setEventPrice(rs.getDouble("price"));
+                event.setEventMaxParticipants(rs.getInt("max_participants"));
+                event.setEventRegisteredParticipants(rs.getInt("registered_participants"));
+                event.setEventDiscount(rs.getDouble("discount"));
+                event.setEventImage(rs.getString("image"));
+                event.setEventCategory(rs.getString("category"));
+            }
+        }
+        return event;
     }
 
 

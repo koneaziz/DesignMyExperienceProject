@@ -89,3 +89,9 @@
     -fx-text-fill: gray;
 }
 
+.spinner {
+    -fx-base: rgba(60, 63, 65, 255);
+    -fx-text-fill: white;
+}
+
+

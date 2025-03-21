@@ -18,6 +18,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+import com.aa.designmyexperience.Controllers.CustomersController;
+
 public class AddeventController {
 
     @FXML
@@ -182,7 +184,7 @@ public class AddeventController {
             // TODO: Remplacer par la page appropriee (par exemple, ownerProfile.fxml pour un business_owner)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/aa/designmyexperience/profile.fxml"));
             Parent root = loader.load();
-            CustomerController controller = loader.getController();
+            CustomersController controller = loader.getController();
             controller.setConnection(connection);
             controller.setUserId(userId);
 

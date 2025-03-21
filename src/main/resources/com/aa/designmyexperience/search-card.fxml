@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="250.0" style="-fx-background-radius: 30px; -fx-border-radius: 30px;" styleClass="searchCardCont" stylesheets="@../../../Styles/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Controllers.SearchCardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleCardClick" prefHeight="330.0" prefWidth="250.0" style="-fx-background-radius: 30px; -fx-border-radius: 30px;" styleClass="searchCardCont" stylesheets="@../../../Styles/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Controllers.SearchCardController">
    <children>
       <ImageView fx:id="EventImage" fitHeight="149.0" fitWidth="251.0" layoutY="-1.0" pickOnBounds="true" style="-fx-background-color: red;" />
       <Label fx:id="EventNameLabel" layoutX="13.0" layoutY="162.0" prefHeight="24.0" prefWidth="231.0" text="Activity Name" textFill="WHITE" AnchorPane.leftAnchor="13.0">
