@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -9,19 +10,31 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #030317;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #030317;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Controllers.OwnerController">
 
     <!-- Header -->
     <top>
         <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #030317; -fx-padding: 10;">
-            <ImageView fitHeight="156.0" fitWidth="262.0" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@../../../Images/LogoDesignMyExperience.png" />
-                </image>
-            </ImageView>
-            <HBox HBox.hgrow="ALWAYS" />
-            <Button fx:id="logoutButton" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Logout" />
+         <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButtonOnAction" prefHeight="165.0" prefWidth="219.0" style="-fx-background-color: #030317;">
+            <graphic>
+               <ImageView fitHeight="156.0" fitWidth="262.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../Images/LogoDesignMyExperience.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+            <HBox prefHeight="165.0" prefWidth="670.0" HBox.hgrow="ALWAYS" />
+         <Button fx:id="logoutButton" onAction="#logoutOnAction" prefHeight="51.0" prefWidth="162.0" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Logout">
+            <font>
+               <Font name="Montserrat Regular" size="21.0" />
+            </font>
+            <HBox.margin>
+               <Insets right="20.0" />
+            </HBox.margin>
+         </Button>
         </HBox>
     </top>
 
@@ -45,20 +58,20 @@
                 </HBox>
 
                 <!-- Section des événements -->
-                <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="Événements proposés" />
-                <ListView fx:id="eventList" prefHeight="200" prefWidth="800" style="-fx-background-color: #111126; -fx-text-fill: white;" />
+                <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="Activities proposed" />
+                <ListView fx:id="eventList" prefHeight="301.0" prefWidth="1600.0" style="-fx-background-color: #111126; -fx-text-fill: white;" />
 
                 <!-- Boutons de gestion -->
                 <HBox alignment="CENTER" spacing="15.0">
-                    <Button fx:id="addEventButton" style="-fx-background-color: #05D6D9; -fx-text-fill: white; -fx-font-size: 16px;" text="Ajouter un événement" />
-                    <Button fx:id="editEventButton" style="-fx-background-color: #F907FC; -fx-text-fill: white; -fx-font-size: 16px;" text="Modifier un événement" />
-                    <Button fx:id="deleteEventButton" style="-fx-background-color: #FF3B30; -fx-text-fill: white; -fx-font-size: 16px;" text="Supprimer un événement" />
+                    <Button fx:id="addEventButton" onAction="#addEventOnAction" style="-fx-background-color: #05D6D9; -fx-text-fill: white; -fx-font-size: 16px;" text="Add an event" />
+                    <Button fx:id="editEventButton" style="-fx-background-color: #F907FC; -fx-text-fill: white; -fx-font-size: 16px;" text="Modify an event" />
+                    <Button fx:id="deleteEventButton" style="-fx-background-color: #FF3B30; -fx-text-fill: white; -fx-font-size: 16px;" text="Delete an event" />
                 </HBox>
 
                 <!-- Gestion des réservations et promotions -->
                 <HBox alignment="CENTER" spacing="15.0">
-                    <Button fx:id="manageBookingsButton" style="-fx-background-color: #05D6D9; -fx-text-fill: white; -fx-font-size: 16px;" text="Gérer les réservations" />
-                    <Button fx:id="managePromotionsButton" style="-fx-background-color: #F907FC; -fx-text-fill: white; -fx-font-size: 16px;" text="Gérer les offres et remises" />
+                    <Button fx:id="manageBookingsButton" style="-fx-background-color: #05D6D9; -fx-text-fill: white; -fx-font-size: 16px;" text="Manage reservations" />
+                    <Button fx:id="managePromotionsButton" style="-fx-background-color: #F907FC; -fx-text-fill: white; -fx-font-size: 16px;" text="Manage discounts" />
                 </HBox>
 
                 <!-- Annulation d'événement -->

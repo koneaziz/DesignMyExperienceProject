@@ -1,5 +1,6 @@
 package com.aa.designmyexperience.Models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Event {
@@ -9,7 +10,7 @@ public class Event {
     private int eventOwner;
     private String eventTitle;
     private String eventDescription;
-    private Date eventDate;
+    private LocalDate eventDate;
     private String eventLocation;
     private double eventPrice;
     private String eventCategory;
@@ -22,8 +23,33 @@ public class Event {
     public Event() {
 
     }
+    public Event (int eventOwner, String eventTitle, String eventDescription, LocalDate eventDate, String eventLocation, double eventPrice, String eventCategory, int eventMaxParticipants, int eventRegisteredParticipants, double eventDiscount, String eventImage) {
+        this.eventOwner = eventOwner;
+        this.eventTitle = eventTitle;
+        this.eventDescription = eventDescription;
+        this.eventDate = eventDate;
+        this.eventLocation = eventLocation;
+        this.eventPrice = eventPrice;
+        this.eventCategory = eventCategory;
+        this.eventMaxParticipants = eventMaxParticipants;
+        this.eventRegisteredParticipants = eventRegisteredParticipants;
+        this.eventDiscount = eventDiscount;
+        this.eventImage = eventImage;
+    }
+    public Event (int eventOwner, String eventTitle, String eventDescription, LocalDate eventDate, String eventLocation, double eventPrice, String eventCategory, int eventMaxParticipants, int eventRegisteredParticipants, double eventDiscount) {
+        this.eventOwner = eventOwner;
+        this.eventTitle = eventTitle;
+        this.eventDescription = eventDescription;
+        this.eventDate = eventDate;
+        this.eventLocation = eventLocation;
+        this.eventPrice = eventPrice;
+        this.eventCategory = eventCategory;
+        this.eventMaxParticipants = eventMaxParticipants;
+        this.eventRegisteredParticipants = eventRegisteredParticipants;
+        this.eventDiscount = eventDiscount;
+    }
 
-    public Event (int eventId, int eventOwner, String eventTitle, String eventDescription, Date eventDate, String eventLocation, double eventPrice, String eventCategory, int eventMaxParticipants, int eventRegisteredParticipants, double eventDiscount, String eventImage) {
+    public Event (int eventId, int eventOwner, String eventTitle, String eventDescription, LocalDate eventDate, String eventLocation, double eventPrice, String eventCategory, int eventMaxParticipants, int eventRegisteredParticipants, double eventDiscount, String eventImage) {
         this.eventId = eventId;
         this.eventOwner = eventOwner;
         this.eventTitle = eventTitle;
@@ -71,11 +97,11 @@ public class Event {
         this.eventDescription = eventDescription;
     }
 
-    public Date getEventDate() {
+    public LocalDate getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(Date eventDate) {
+    public void setEventDate(LocalDate eventDate) {
         this.eventDate = eventDate;
     }
 

@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 
 public class SearchCardController {
 
@@ -31,15 +32,15 @@ public class SearchCardController {
 
     private Event event;
 
-    String pattern = "dd/MM/yyyy HH:mm"; // We create the way the date will be visualize
-    DateFormat df = new SimpleDateFormat(pattern);
+    String pattern = "dd/MM/yyyy"; // We create the way the date will be visualize
+    DateTimeFormatter df = DateTimeFormatter.ofPattern(pattern);
 
     /* We will set the Event informations */
     public void setSearchEvent(Event event) {
         this.event = event;
         EventNameLabel.setText(event.getEventTitle());
         CategoryLabel.setText(event.getEventCategory());
-        DateLabel.setText(df.format(event.getEventDate()));
+        DateLabel.setText(event.getEventDate().format(df));
         LocationLabel.setText(event.getEventLocation());
         PriceLabel.setText(String.valueOf(event.getEventPrice()));
 

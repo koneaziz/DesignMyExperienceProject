@@ -5,6 +5,9 @@ package com.aa.designmyexperience.Util;
 
 import com.aa.designmyexperience.Models.Event;
 import com.aa.designmyexperience.Models.User;
+import javafx.scene.control.Alert;
+
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -134,7 +137,7 @@ public class DBconnect {
                 event.setEventOwner(resultQuery.getInt("business_id"));
                 event.setEventTitle(resultQuery.getString("title"));
                 event.setEventDescription(resultQuery.getString("description"));
-                event.setEventDate(resultQuery.getDate("event_date"));
+                event.setEventDate(resultQuery.getDate("event_date").toLocalDate());
                 event.setEventLocation(resultQuery.getString("location"));
                 event.setEventPrice(resultQuery.getDouble("price"));
                 event.setEventMaxParticipants(resultQuery.getInt("max_participants"));
@@ -166,7 +169,7 @@ public class DBconnect {
                 event.setEventOwner(resultQuery.getInt("business_id"));
                 event.setEventTitle(resultQuery.getString("title"));
                 event.setEventDescription(resultQuery.getString("description"));
-                event.setEventDate(resultQuery.getDate("event_date"));
+                event.setEventDate(resultQuery.getDate("event_date").toLocalDate());
                 event.setEventLocation(resultQuery.getString("location"));
                 event.setEventPrice(resultQuery.getDouble("price"));
                 event.setEventMaxParticipants(resultQuery.getInt("max_participants"));
@@ -195,7 +198,7 @@ public class DBconnect {
                 event.setEventOwner(resultQuery.getInt("business_id"));
                 event.setEventTitle(resultQuery.getString("title"));
                 event.setEventDescription(resultQuery.getString("description"));
-                event.setEventDate(resultQuery.getDate("event_date"));
+                event.setEventDate(resultQuery.getDate("event_date").toLocalDate());
                 event.setEventLocation(resultQuery.getString("location"));
                 event.setEventPrice(resultQuery.getDouble("price"));
                 event.setEventMaxParticipants(resultQuery.getInt("max_participants"));
@@ -240,7 +243,7 @@ public class DBconnect {
                 event.setEventOwner(resultQuery.getInt("business_id"));
                 event.setEventTitle(resultQuery.getString("title"));
                 event.setEventDescription(resultQuery.getString("description"));
-                event.setEventDate(resultQuery.getDate("event_date"));
+                event.setEventDate(resultQuery.getDate("event_date").toLocalDate());
                 event.setEventLocation(resultQuery.getString("location"));
                 event.setEventPrice(resultQuery.getDouble("price"));
                 event.setEventMaxParticipants(resultQuery.getInt("max_participants"));
@@ -271,7 +274,7 @@ public class DBconnect {
                 event.setEventOwner(rs.getInt("business_id"));
                 event.setEventTitle(rs.getString("title"));
                 event.setEventDescription(rs.getString("description"));
-                event.setEventDate(rs.getDate("event_date")); // Si besoin, adaptez pour un datetime
+                event.setEventDate(rs.getDate("event_date").toLocalDate()); // Si besoin, adaptez pour un datetime
                 event.setEventLocation(rs.getString("location"));
                 event.setEventPrice(rs.getDouble("price"));
                 event.setEventMaxParticipants(rs.getInt("max_participants"));
@@ -282,6 +285,30 @@ public class DBconnect {
             }
         }
         return event;
+    }
+
+    /* Add an event by the user */
+    public static void addEvent(Event event) throws SQLException {
+
+        String query = "INSERT INTO events (business_id, title, description, event_date, location, price, max_participants, registered_participants, discount, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query) ) {
+            stmt.setInt(1, event.getEventOwner()); // business_id
+            stmt.setString(2, event.getEventTitle());
+            stmt.setString(3, event.getEventDescription());
+            stmt.setDate(4, java.sql.Date.valueOf(event.getEventDate()));
+            stmt.setString(5, event.getEventLocation());
+            stmt.setDouble(6, event.getEventPrice());
+            stmt.setInt(7, event.getEventMaxParticipants());
+            stmt.setInt(8, event.getEventRegisteredParticipants()); // registered_participants initialize at 0
+            stmt.setDouble(9, event.getEventDiscount());
+
+            stmt.executeUpdate();
+            showAlert("Success", "Event added successfully !");
+
+        } catch (SQLException e) {
+            showAlert("Error", "Error when adding event : " + e.getMessage());
+        }
     }
 
 
@@ -309,6 +336,16 @@ public class DBconnect {
             }
         }
         return locations;
+    }
+
+
+    /* Show alert method */
+    public static void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 
