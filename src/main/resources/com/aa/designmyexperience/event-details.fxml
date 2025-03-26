@@ -89,9 +89,9 @@
                <children>
                       <AnchorPane prefHeight="749.0" prefWidth="996.0">
                           <children>
-                              <Label fx:id="ActivityTitleLabel" layoutX="90.0" layoutY="31.0" prefHeight="63.0" prefWidth="782.0" text="Activity Title" textAlignment="CENTER" textFill="WHITE">
+                              <Label fx:id="ActivityTitleLabel" layoutX="90.0" layoutY="31.0" prefHeight="72.0" prefWidth="596.0" text="Activity Title" textAlignment="CENTER" textFill="WHITE">
                                   <font>
-                                      <Font name="Montserrat Black" size="50.0" />
+                                      <Font name="Montserrat Black" size="35.0" />
                                   </font>
                               </Label>
                         <FontAwesomeIconView fill="GREY" glyphName="CALENDAR" layoutX="90.0" layoutY="133.0" selectionFill="GREY" size="35" wrappingWidth="35.8013858795166" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="103.0">
@@ -139,11 +139,15 @@
                               <Font name="Montserrat Black" size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="ActivityDescriptionLabel" alignment="TOP_LEFT" layoutX="90.0" layoutY="457.0" prefHeight="233.0" prefWidth="856.0" text="Description" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="80.0">
-                           <font>
-                              <Font name="Mont ExtraLight DEMO" size="20.0" />
-                           </font>
-                        </Label>
+                        <ScrollPane hbarPolicy="NEVER" hmax="0.0" layoutX="53.0" layoutY="457.0" prefHeight="257.0" prefWidth="887.0" style="-fx-background-color: #030317; -fx-border-color: #030317;" stylesheets="@../../../Styles/styles.css" vbarPolicy="NEVER" AnchorPane.leftAnchor="53.0">
+                           <content>
+                              <Label fx:id="ActivityDescriptionLabel" alignment="TOP_LEFT" prefHeight="399.0" prefWidth="883.0" style="-fx-background-color: none;" text="Description" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="Mont ExtraLight DEMO" size="20.0" />
+                                 </font>
+                              </Label>
+                           </content>
+                        </ScrollPane>
                         <Line endX="980.5255737304688" endY="27.31622314453125" startX="980.5255126953125" startY="705.1970825195312" stroke="WHITE" strokeLineCap="ROUND" />
                         <Label fx:id="ownerLabel" layoutX="759.0" layoutY="40.0" prefHeight="37.0" prefWidth="180.0" text="Organizer" textAlignment="CENTER" textFill="GREY">
                            <font>

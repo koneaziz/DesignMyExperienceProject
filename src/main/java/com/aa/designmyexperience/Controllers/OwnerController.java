@@ -2,6 +2,7 @@ package com.aa.designmyexperience.Controllers;
 
 import com.aa.designmyexperience.Models.Session;
 import com.aa.designmyexperience.Models.User;
+import com.aa.designmyexperience.Util.DBconnect;
 import com.aa.designmyexperience.Util.NavigationManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,23 +12,27 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class OwnerController {
 
     @FXML
-    private Label companyName;
+    private Label companyName, numberActivitiesLabel;
     @FXML
     private ImageView companyLogo;
 
 
+    int NumberActivities = 0;
+    int userId;
 
     @FXML
-    private void initialize() {
+    private void initialize() throws SQLException {
         /* Get the session with the current user */
         Session session = Session.getInstance();
 
         if (session != null && session.getCurrentUser() != null) {
             User user = session.getCurrentUser();
+            userId = user.getId();
 
             /* We get the current User information in the Session */
             String photo = user.getPhoto();
@@ -36,6 +41,10 @@ public class OwnerController {
 
             companyName.setText(user.getFirstName() + " " + user.getLastName());
         }
+
+        NumberActivities = DBconnect.countEventsOwner(userId);
+        numberActivitiesLabel.setText(String.valueOf(NumberActivities));
+
     }
 
 

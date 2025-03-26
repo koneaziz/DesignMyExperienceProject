@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -12,92 +13,98 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #030317;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Controllers.AddEventController">
 
-    <!-- Header -->
-    <top>
-        <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #030317; -fx-padding: 10;">
-         <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButtonOnAction" prefHeight="165.0" prefWidth="219.0" style="-fx-background-color: #030317;">
-            <graphic>
-               <ImageView fitHeight="156.0" fitWidth="262.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../../../Images/LogoDesignMyExperience.png" />
-                  </image>
-               </ImageView>
-            </graphic>
-         </Button>
-            <HBox HBox.hgrow="ALWAYS" />
-            <Button fx:id="backButton" onAction="#handleBack" prefHeight="51.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Back">
-            <HBox.margin>
-               <Insets right="20.0" />
-            </HBox.margin></Button>
-        </HBox>
-    </top>
-
-    <!-- Center: Event Form -->
-    <center>
-        <VBox alignment="CENTER" prefHeight="947.0" prefWidth="1600.0" spacing="20.0" style="-fx-padding: 50;">
-            <!-- Title -->
-            <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;" text="Add an event">
-                <VBox.margin>
-                    <Insets left="30.0" />
-                </VBox.margin>
-            </Label>
-
-            <!-- Event Form -->
-            <VBox alignment="CENTER_LEFT" maxWidth="1000.0" prefHeight="450.0" prefWidth="591.0" spacing="15.0" style="-fx-background-color: #111126; -fx-padding: 20; -fx-border-radius: 10;">
-                <!-- Event Title -->
-                <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Title" />
-                <TextField fx:id="titleField" prefWidth="350" style="-fx-font-size: 16px; -fx-padding: 5;" />
-
-                <!-- Description -->
-                <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Description" />
-                <TextArea fx:id="descriptionField" prefHeight="100" prefWidth="350" style="-fx-font-size: 16px; -fx-padding: 5;" />
-            <Label layoutX="30.0" layoutY="223.0" style="-fx-text-fill: white; -fx-font-size: 18px;" text="Category" />
-            <TextField fx:id="categoryField" layoutX="30.0" layoutY="68.0" prefWidth="350" style="-fx-font-size: 16px; -fx-padding: 5;" />
-
-                <!-- Event Date -->
-                <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Date" />
-            <DatePicker fx:id="eventDateField" />
-
-                <!-- Location -->
-                <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Location" />
-                <TextField fx:id="locationField" prefWidth="350" style="-fx-font-size: 16px; -fx-padding: 5;" />
-
-                <!-- Price, Max Participants, and Discount -->
-                <HBox spacing="20.0">
-                    <VBox>
-                        <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Price (£)" />
-                        <TextField fx:id="priceField" prefWidth="100" style="-fx-font-size: 16px; -fx-padding: 5;" />
-                    </VBox>
-                    <VBox>
-                        <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Max participants" />
-                        <TextField fx:id="maxParticipantsField" prefWidth="100" style="-fx-font-size: 16px; -fx-padding: 5;" />
-                    </VBox>
-                    <VBox>
-                        <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Discount (%)" />
-                        <TextField fx:id="discountField" prefWidth="100" promptText="Optionnal" style="-fx-font-size: 16px; -fx-padding: 5;" />
-                    </VBox>
-                </HBox>
-
-                <!-- Image -->
-                <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Image" />
-            <ImageView fx:id="imageField" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="173.0" text="Load an image" />
-
-                <VBox.margin>
-                    <Insets />
-                </VBox.margin>
-            </VBox>
-
-            <!-- Buttons -->
-            <HBox alignment="CENTER" spacing="20.0">
-                <Button fx:id="saveButton" onAction="#handleSaveEvent" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-font-size: 18px;" text="Save" />
-                <Button fx:id="cancelButton" onAction="#handleBack" style="-fx-background-color: linear-gradient(to right, #FF3B30, #FF9500); -fx-text-fill: white; -fx-font-size: 18px;" text="Discard" />
-                <VBox.margin>
-                    <Insets left="50.0" />
-                </VBox.margin>
-            </HBox>
-        </VBox>
-    </center>
-</BorderPane>
+<ScrollPane hbarPolicy="NEVER" hmax="0.0" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Controllers.AddEventController">
+   <content>
+      <BorderPane prefHeight="1126.0" prefWidth="1600.0" style="-fx-background-color: #030317;">
+      
+          <!-- Header -->
+          <top>
+              <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #030317; -fx-padding: 10;">
+               <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButtonOnAction" prefHeight="165.0" prefWidth="219.0" style="-fx-background-color: #030317;">
+                  <graphic>
+                     <ImageView fitHeight="156.0" fitWidth="262.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../../Images/LogoDesignMyExperience.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+                  <HBox HBox.hgrow="ALWAYS" />
+                  <Button fx:id="backButton" onAction="#handleBack" prefHeight="51.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Back">
+                  <HBox.margin>
+                     <Insets right="20.0" />
+                  </HBox.margin>
+               </Button>
+              </HBox>
+          </top>
+      
+          <!-- Center: Event Form -->
+          <center>
+              <VBox alignment="CENTER" prefHeight="947.0" prefWidth="1600.0" spacing="20.0" style="-fx-padding: 50;">
+                  <!-- Title -->
+                  <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;" text="Add an event">
+                      <VBox.margin>
+                          <Insets left="30.0" />
+                      </VBox.margin>
+                  </Label>
+      
+                  <!-- Event Form -->
+                  <VBox alignment="CENTER_LEFT" maxWidth="1000.0" prefHeight="450.0" prefWidth="591.0" spacing="15.0" style="-fx-background-color: #111126; -fx-padding: 20; -fx-border-radius: 10;">
+                      <!-- Event Title -->
+                      <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Title" />
+                      <TextField fx:id="titleField" prefWidth="350" style="-fx-font-size: 16px; -fx-padding: 5;" />
+      
+                      <!-- Description -->
+                      <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Description" />
+                      <TextArea fx:id="descriptionField" prefHeight="100" prefWidth="350" style="-fx-font-size: 16px; -fx-padding: 5;" />
+                  <Label layoutX="30.0" layoutY="223.0" style="-fx-text-fill: white; -fx-font-size: 18px;" text="Category" />
+                  <TextField fx:id="categoryField" layoutX="30.0" layoutY="68.0" prefWidth="350" style="-fx-font-size: 16px; -fx-padding: 5;" />
+      
+                      <!-- Event Date -->
+                      <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Date" />
+                  <DatePicker fx:id="eventDateField" />
+      
+                      <!-- Location -->
+                      <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Location" />
+                      <TextField fx:id="locationField" prefWidth="350" style="-fx-font-size: 16px; -fx-padding: 5;" />
+      
+                      <!-- Price, Max Participants, and Discount -->
+                      <HBox spacing="20.0">
+                          <VBox>
+                              <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Price (£)" />
+                              <TextField fx:id="priceField" prefWidth="100" style="-fx-font-size: 16px; -fx-padding: 5;" />
+                          </VBox>
+                          <VBox>
+                              <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Max participants" />
+                              <TextField fx:id="maxParticipantsField" prefWidth="100" style="-fx-font-size: 16px; -fx-padding: 5;" />
+                          </VBox>
+                          <VBox>
+                              <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Discount (%)" />
+                              <TextField fx:id="discountField" prefWidth="100" promptText="Optionnal" style="-fx-font-size: 16px; -fx-padding: 5;" />
+                          </VBox>
+                      </HBox>
+      
+                      <!-- Image -->
+                      <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Image" />
+                  <ImageView fx:id="imageField" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="loadImage" mnemonicParsing="false" onAction="#loadFile" prefHeight="26.0" prefWidth="173.0" text="Load an image" />
+      
+                      <VBox.margin>
+                          <Insets />
+                      </VBox.margin>
+                  </VBox>
+      
+                  <!-- Buttons -->
+                  <HBox alignment="CENTER" spacing="20.0">
+                      <Button fx:id="saveButton" onAction="#handleSaveEvent" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-font-size: 18px;" text="Save" />
+                      <Button fx:id="cancelButton" onAction="#handleBack" style="-fx-background-color: linear-gradient(to right, #FF3B30, #FF9500); -fx-text-fill: white; -fx-font-size: 18px;" text="Discard" />
+                      <VBox.margin>
+                          <Insets left="50.0" />
+                      </VBox.margin>
+                  </HBox>
+              </VBox>
+          </center>
+      </BorderPane>
+   </content>
+</ScrollPane>

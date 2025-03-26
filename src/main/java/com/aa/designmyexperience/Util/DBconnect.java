@@ -290,7 +290,7 @@ public class DBconnect {
     /* Add an event by the user */
     public static void addEvent(Event event) throws SQLException {
 
-        String query = "INSERT INTO events (business_id, title, description, event_date, location, price, max_participants, registered_participants, discount, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO events (business_id, title, description, event_date, location, price, max_participants, registered_participants, discount, image, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(query) ) {
             stmt.setInt(1, event.getEventOwner()); // business_id
@@ -302,6 +302,8 @@ public class DBconnect {
             stmt.setInt(7, event.getEventMaxParticipants());
             stmt.setInt(8, event.getEventRegisteredParticipants()); // registered_participants initialize at 0
             stmt.setDouble(9, event.getEventDiscount());
+            stmt.setString(10, event.getEventImage());
+            stmt.setString(11, event.getEventCategory());
 
             stmt.executeUpdate();
             showAlert("Success", "Event added successfully !");
@@ -309,6 +311,22 @@ public class DBconnect {
         } catch (SQLException e) {
             showAlert("Error", "Error when adding event : " + e.getMessage());
         }
+    }
+
+    /* Count the number of event of the owner */
+    public static int countEventsOwner(int businessId) throws SQLException {
+        String query = "SELECT count(*) FROM events WHERE business_id = ?";
+        int count = 0;
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, businessId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    count = rs.getInt(1);
+                }
+            }
+        }
+        return count;
     }
 
 

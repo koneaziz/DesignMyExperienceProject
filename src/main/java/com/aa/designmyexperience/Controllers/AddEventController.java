@@ -5,10 +5,8 @@ import com.aa.designmyexperience.Models.Session;
 import com.aa.designmyexperience.Models.User;
 import com.aa.designmyexperience.Util.DBconnect;
 import com.aa.designmyexperience.Util.NavigationManager;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,17 +15,17 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.Date;
 
-import com.aa.designmyexperience.Controllers.CustomersController;
 import javafx.util.StringConverter;
 
 import static com.aa.designmyexperience.Util.DBconnect.showAlert;
@@ -69,6 +67,7 @@ public class AddEventController {
 
     private Connection connection; // Connexion a la base de donnees
     private int userId; // ID of connected user (business_id)
+    private File imageFile;
 
     @FXML
     private void initialize() {
@@ -95,7 +94,7 @@ public class AddEventController {
     }
 
     @FXML
-    private void handleSaveEvent() {
+    private void handleSaveEvent() throws SQLException, IOException {
         String title = titleField.getText().trim();
         String description = descriptionField.getText().trim();
         LocalDate eventDate = eventDateField.getValue();
@@ -104,11 +103,11 @@ public class AddEventController {
         String category = categoryField.getText().trim();
         String maxParticipants = maxParticipantsField.getText().trim();
         String discount = discountField.getText().trim();
-        //image = imageField.getText().trim();
+        String imageUrl = "";
 
         // Verify if the important fields are entered
         if (title.isEmpty() || description.isEmpty() || eventDate == null || location.isEmpty() || price.isEmpty() || maxParticipants.isEmpty()) {
-            showAlert("Erreur", "Enter all the fields !");
+            showAlert("Error", "Enter all the fields !");
             return;
         }
 
@@ -116,7 +115,7 @@ public class AddEventController {
 
         // Verify if date is in the future
         if (eventDate.isBefore(ChronoLocalDate.from(LocalDateTime.now()))) {
-            showAlert("Erreur", "The date has to be in the future.");
+            showAlert("Error", "The date has to be in the future.");
             return;
         }
 
@@ -125,11 +124,11 @@ public class AddEventController {
         try {
             eventPrice = Double.parseDouble(price);
             if (eventPrice < 0) {
-                showAlert("Erreur", "Le prix ne peut pas etre negatif.");
+                showAlert("Error", "The price has to be a positive number.");
                 return;
             }
         } catch (NumberFormatException e) {
-            showAlert("Erreur", "Le prix doit etre un nombre valide (par exemple, 29.99).");
+            showAlert("Error", "The price has to be a valid number.");
             return;
         }
 
@@ -138,11 +137,11 @@ public class AddEventController {
         try {
             maxParticipantsValue = Integer.parseInt(maxParticipants);
             if (maxParticipantsValue <= 0) {
-                showAlert("Erreur", "La capacite maximale doit etre un nombre positif superieur a 0.");
+                showAlert("Error", "The max participants has to be a positive number.");
                 return;
             }
         } catch (NumberFormatException e) {
-            showAlert("Erreur", "La capacite maximale doit etre un nombre entier valide.");
+            showAlert("Error", "The maximum capacity has to be an integer.");
             return;
         }
 
@@ -152,17 +151,58 @@ public class AddEventController {
             try {
                 discountValue = Double.parseDouble(discount);
                 if (discountValue < 0 || discountValue > 100) {
-                    showAlert("Erreur", "La reduction doit etre un pourcentage entre 0 et 100.");
+                    showAlert("Error", "The reduction has to be between 0 and 100.");
                     return;
                 }
             } catch (NumberFormatException e) {
-                showAlert("Erreur", "La reduction doit etre un nombre valide (par exemple, 10.50 pour 10,5%).");
+                showAlert("Error", "The reduction has to be a number.");
                 return;
             }
         }
 
+        // Get the image url
+        if (this.imageFile != null) {
+            String containerName = "designmyexperience";
+            String sasToken = "sv=2024-11-04&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-04-26T18:25:34Z&st=2025-03-26T11:25:34Z&sip=0.0.0.0-255.255.255.255&spr=https&sig=ypipIDCLtrTBoGg1%2FeHp9MPD5hjchC0jN9KDPSt%2BpSQ%3D";
+            String blobUrlWithSas = "https://designmyexperience.blob.core.windows.net/"
+                    + containerName + "/"
+                    + imageFile.getName()
+                    + "?" + sasToken;
+
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(blobUrlWithSas))
+                    // Le header "x-ms-blob-type" indique que nous créons un blob de type BlockBlob
+                    .header("x-ms-blob-type", "BlockBlob")
+                    .PUT(HttpRequest.BodyPublishers.ofFile(imageFile.toPath()))
+                    .build();
+
+            try {
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                if (response.statusCode() == 201 || response.statusCode() == 200) {
+                    // We get the url of the blob
+                    imageUrl = blobUrlWithSas;
+                    System.out.println("Upload successful, image URL: " + imageUrl);
+                } else {
+                    showAlert("Upload Error", "Failed to upload image. Status code: " + response.statusCode());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                showAlert("Upload Error", "An error occurred: " + e.getMessage());
+            }
+
+        } else {
+            imageUrl = getClass().getResource("/Images/default-event.png").toExternalForm();
+        }
+
         // Save it as an event
-        Event event = new Event(userId, title, description, eventDate, location, eventPrice, category, maxParticipantsValue, 0, discountValue);
+        Event event = new Event(userId, title, description, eventDate, location, eventPrice, category, maxParticipantsValue, 0, discountValue, imageUrl);
+
+        // Insert in the database
+        DBconnect.addEvent(event);
+
+        // Go back to the profile
+        NavigationManager.navigate("profileOwner.fxml");
 
     }
 
@@ -171,22 +211,30 @@ public class AddEventController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select a file");
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("JPEG image", "*.jpg"),
-                new FileChooser.ExtensionFilter("PNG image", "*.png"),
-                new FileChooser.ExtensionFilter("All images", "*.jpg", "*.png"));
+                new FileChooser.ExtensionFilter("All images", "*.jpg", "*.png","*.webp"));
 
-        File selectedFile = fileChooser.showOpenDialog(null);
+        Stage stage = (Stage) imageField.getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+
         if (selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
             imageField.setImage(image);
         } else {
             showAlert("Not Found", "No image selected.");
         }
+
+        this.imageFile = selectedFile;
+
     }
 
     @FXML
     private void handleBack() throws IOException {
         NavigationManager.navigate("profileOwner.fxml");
+    }
+
+    @FXML
+    private void homeButtonOnAction(ActionEvent event) throws IOException {
+        NavigationManager.navigate("home.fxml");
     }
 
 }

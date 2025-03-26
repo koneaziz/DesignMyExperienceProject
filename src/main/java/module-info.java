@@ -4,6 +4,7 @@ module com.aa.designmyexperience {
     requires java.sql;
     requires javafx.web;
     requires java.desktop;
+    requires java.net.http;
 
 
     opens com.aa.designmyexperience to javafx.fxml;
