@@ -60,7 +60,7 @@
                            <buttons>
                               <Button fx:id="profilePageButton" mnemonicParsing="false" onAction="#profilePageButtonOnAction" prefHeight="127.0" prefWidth="398.0" style="-fx-background-color: #030317;">
                                  <graphic>
-                                    <Label fx:id="lnameLabel" alignment="TOP_LEFT" minWidth="48.0" prefHeight="94.0" prefWidth="223.0" text="Last" textFill="WHITE">
+                                    <Label fx:id="lnameLabel" alignment="TOP_LEFT" minWidth="48.0" prefHeight="94.0" prefWidth="260.0" text="Last" textFill="WHITE">
                                        <font>
                                           <Font name="Montserrat Regular" size="22.0" />
                                        </font>

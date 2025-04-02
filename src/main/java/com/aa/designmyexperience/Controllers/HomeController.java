@@ -31,6 +31,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -66,11 +67,9 @@ public class HomeController {
 
             fnameLabel.setText(user.getFirstName());
             lnameLabel.setText(user.getLastName());
-        } else {
-            fnameLabel.setText("Welcome, guest!");
         }
 
-        addAllEventToContainer(trendingContainer);
+        addAllEventToContainerSorted(trendingContainer);
         addAllEventToContainer(dateEventContainer);
 
         /* We will format the date */
@@ -95,11 +94,44 @@ public class HomeController {
             events = DBconnect.getEvents();
 
             for (Event event : events) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/aa/designmyexperience/card.fxml"));
-                Parent card = loader.load();
-                CardController cardController = loader.getController();
-                cardController.setEvent(event);
-                hBox.getChildren().add(card);
+                if (event.getEventDate() != null &&
+                        (event.getEventDate().isEqual(LocalDate.now()) || event.getEventDate().isAfter(LocalDate.now()))) {
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/aa/designmyexperience/card.fxml"));
+                    Parent card = loader.load();
+                    CardController cardController = loader.getController();
+                    cardController.setEvent(event);
+                    hBox.getChildren().add(card);
+                }
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /* We get all the event (sorted by Participants) and add it on the following container */
+    public void addAllEventToContainerSorted(HBox hBox) {
+        try {
+            ArrayList<Event> events = new ArrayList<Event>();
+            events = DBconnect.getEvents();
+
+            events.sort((e1, e2) -> Integer.compare(e2.getEventRegisteredParticipants(), e1.getEventRegisteredParticipants()));
+
+            for (Event event : events) {
+                if (event.getEventDate() != null &&
+                        (event.getEventDate().isEqual(LocalDate.now()) || event.getEventDate().isAfter(LocalDate.now()))) {
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/aa/designmyexperience/card.fxml"));
+                    Parent card = loader.load();
+                    CardController cardController = loader.getController();
+                    cardController.setEvent(event);
+                    hBox.getChildren().add(card);
+                }
             }
 
 

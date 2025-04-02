@@ -7,11 +7,14 @@ import com.aa.designmyexperience.Util.DBconnect;
 import com.aa.designmyexperience.Util.NavigationManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,53 +22,35 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
 
-import javafx.util.StringConverter;
-
 import static com.aa.designmyexperience.Util.DBconnect.showAlert;
 
-public class AddEventController {
+public class ModifyEventController {
 
     @FXML
     private TextField titleField;
-
     @FXML
     private TextArea descriptionField;
-
     @FXML
     private DatePicker eventDateField, eventEndDateField;
-
     @FXML
     private TextField locationField;
-
     @FXML
     private TextField priceField, categoryField;
-
     @FXML
     private TextField maxParticipantsField;
-
     @FXML
     private TextField discountField;
-
     @FXML
     private ImageView imageField;
 
-    @FXML
-    private Button saveButton;
-
-    @FXML
-    private Button cancelButton;
-
-    @FXML
-    private Button backButton;
-
-    private int userId; // ID of connected user (business_id)
+    private int userId;
+    private Event event;
     private File imageFile;
 
     @FXML
@@ -90,6 +75,30 @@ public class AddEventController {
                 return (string != null && !string.isEmpty()) ? LocalDate.parse(string, dateFormatter) : null;
             }
         });
+
+
+
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+        updateEventInfo();
+    }
+
+    public void updateEventInfo() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        titleField.setText(event.getEventTitle());
+        descriptionField.setText(event.getEventDescription());
+        categoryField.setText(event.getEventCategory());
+        eventDateField.setValue(event.getEventDate());
+        eventEndDateField.setValue(event.getEventEndDate());
+        locationField.setText(event.getEventLocation());
+        priceField.setText(String.valueOf(event.getEventPrice()));
+        maxParticipantsField.setText(String.valueOf(event.getEventMaxParticipants()));
+        discountField.setText(String.valueOf(event.getEventDiscount()));
+        Image image = new Image(event.getEventImage());
+        imageField.setImage(image);
+
     }
 
     @FXML
@@ -103,14 +112,14 @@ public class AddEventController {
         String category = categoryField.getText().trim();
         String maxParticipants = maxParticipantsField.getText().trim();
         String discount = discountField.getText().trim();
-        String imageUrl = "";
+        String imageUrl = event.getEventImage();
+        int eventId = event.getEventId();
 
         // Verify if the important fields are entered
-        if (title.isEmpty() || description.isEmpty() || eventDate == null || eventEndDate == null || location.isEmpty() || price.isEmpty() || maxParticipants.isEmpty() || category.isEmpty()) {
+        if (title.isEmpty() || description.isEmpty() || eventDate == null || eventEndDate == null || location.isEmpty() || price.isEmpty() || maxParticipants.isEmpty() || categoryField.getText().trim().isEmpty()) {
             showAlert("Error", "Enter all the fields !");
             return;
         }
-
 
 
         // Verify if date is in the future
@@ -157,6 +166,8 @@ public class AddEventController {
             return;
         }
 
+        int registeredParticipants = event.getEventRegisteredParticipants();
+
         // Verify the format of the discount
         double discountValue = 0;
         if (!discount.isEmpty()) {
@@ -184,7 +195,7 @@ public class AddEventController {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(blobUrlWithSas))
-                    // Le header "x-ms-blob-type" indique que nous créons un blob de type BlockBlob
+
                     .header("x-ms-blob-type", "BlockBlob")
                     .PUT(HttpRequest.BodyPublishers.ofFile(imageFile.toPath()))
                     .build();
@@ -204,18 +215,17 @@ public class AddEventController {
             }
 
         } else {
-            imageUrl = getClass().getResource("/Images/default-event.png").toExternalForm();
+            imageUrl = event.getEventImage();
         }
 
         // Save it as an event
-        Event event = new Event(userId, title, description, eventDate, eventEndDate, location, eventPrice, category, maxParticipantsValue, 0, discountValue, imageUrl);
+        Event event = new Event(eventId,userId, title, description, eventDate, eventEndDate, location, eventPrice, category, maxParticipantsValue, registeredParticipants, discountValue, imageUrl);
 
         // Insert in the database
-        DBconnect.addEvent(event);
+        DBconnect.modifyEvent(event);
 
         // Go back to the profile
         NavigationManager.navigate("profileOwner.fxml");
-
     }
 
     @FXML
@@ -248,5 +258,7 @@ public class AddEventController {
     private void homeButtonOnAction(ActionEvent event) throws IOException {
         NavigationManager.navigate("home.fxml");
     }
+
+
 
 }

@@ -18,6 +18,7 @@ import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SearchController {
@@ -89,11 +90,14 @@ public class SearchController {
             events = DBconnect.getEventsByName(searchField.getText());
 
             for (Event event : events) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/aa/designmyexperience/search-card.fxml"));
-                Parent card = loader.load();
-                SearchCardController searchCardController = loader.getController();
-                searchCardController.setSearchEvent(event);
-                hBox.getChildren().add(card);
+                if (event.getEventDate() != null &&
+                        (event.getEventDate().isEqual(LocalDate.now()) || event.getEventDate().isAfter(LocalDate.now()))) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/aa/designmyexperience/search-card.fxml"));
+                    Parent card = loader.load();
+                    SearchCardController searchCardController = loader.getController();
+                    searchCardController.setSearchEvent(event);
+                    hBox.getChildren().add(card);
+                }
             }
 
 
@@ -112,11 +116,40 @@ public class SearchController {
             events = DBconnect.getEventsByFilters(searchField.getText(), categoryChoiceBox.getValue(),locationChoiceBox.getValue(), priceSlider.getValue());
 
             for (Event event : events) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/aa/designmyexperience/search-card.fxml"));
-                Parent card = loader.load();
-                SearchCardController searchCardController = loader.getController();
-                searchCardController.setSearchEvent(event);
-                hBox.getChildren().add(card);
+                if (event.getEventDate() != null &&
+                        (event.getEventDate().isEqual(LocalDate.now()) || event.getEventDate().isAfter(LocalDate.now()))) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/aa/designmyexperience/search-card.fxml"));
+                    Parent card = loader.load();
+                    SearchCardController searchCardController = loader.getController();
+                    searchCardController.setSearchEvent(event);
+                    hBox.getChildren().add(card);
+                }
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /* Add the event from the filters */
+    public void addSearchFilterCategory(TilePane hBox, String category) {
+        try {
+            ArrayList<Event> events;
+            events = DBconnect.getEventsByFilters(searchField.getText(), category,locationChoiceBox.getValue(), priceSlider.getValue());
+
+            for (Event event : events) {
+                if (event.getEventDate() != null &&
+                        (event.getEventDate().isEqual(LocalDate.now()) || event.getEventDate().isAfter(LocalDate.now()))) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/aa/designmyexperience/search-card.fxml"));
+                    Parent card = loader.load();
+                    SearchCardController searchCardController = loader.getController();
+                    searchCardController.setSearchEvent(event);
+                    hBox.getChildren().add(card);
+                }
             }
 
 

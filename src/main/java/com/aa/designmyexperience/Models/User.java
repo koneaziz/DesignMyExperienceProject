@@ -18,6 +18,14 @@ public class User {
     public User() {
     }
 
+    public User (int id, String firstName, String lastName, String email, String photo) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.photo = photo;
+    }
+
 
     public User(int id, String firstName, String lastName, String userType, String email, String password, String photo, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;

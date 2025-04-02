@@ -51,7 +51,7 @@
                     </ImageView>
                     <!-- Profile Information -->
                     <VBox alignment="CENTER_LEFT" prefHeight="250.0" prefWidth="399.0" spacing="5.0" style="-fx-background-color: #111126; -fx-padding: 10;">
-                        <Label fx:id="nameLabel" prefHeight="37.0" prefWidth="108.0" style="-fx-font-weight: bold; -fx-text-fill: white;" text="Name">
+                        <Label fx:id="nameLabel" prefHeight="37.0" prefWidth="343.0" style="-fx-font-weight: bold; -fx-text-fill: white;" text="Name">
                             <font>
                                 <Font name="Montserrat Regular" size="30.0" />
                             </font>
@@ -77,21 +77,14 @@
 
                 <!-- Buttons/Features -->
                 <HBox alignment="BOTTOM_CENTER" spacing="10.0">
-                    <Button fx:id="paymentButton" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Add/Modify Payment Method">
-                        <HBox.margin>
-                            <Insets right="50.0" />
-                        </HBox.margin>
-                        <font>
-                            <Font name="Montserrat Regular" size="17.0" />
-                        </font></Button>
-                    <Button fx:id="historyButton" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Booking History">
+                    <Button fx:id="historyButton" onAction="#viewBookingHistory" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Booking History">
                         <HBox.margin>
                             <Insets right="50.0" />
                         </HBox.margin>
                         <font>
                             <Font size="17.0" />
                         </font></Button>
-                    <Button fx:id="editButton" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Edit Personal Information">
+                    <Button fx:id="editButton" onAction="#modifyProfile" style="-fx-background-color: linear-gradient(to right, #05D6D9, #F907FC); -fx-text-fill: white; -fx-padding: 5 15;" text="Edit Personal Information">
                         <font>
                             <Font name="Montserrat Regular" size="17.0" />
                         </font></Button>

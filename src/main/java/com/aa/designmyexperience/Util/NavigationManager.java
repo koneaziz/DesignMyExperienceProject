@@ -2,6 +2,7 @@ package com.aa.designmyexperience.Util;
 
 import com.aa.designmyexperience.Models.Session;
 import com.aa.designmyexperience.Models.User;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,8 +24,32 @@ public class NavigationManager {
 
     // A Navigation fonction to navigate between the views
     public static void navigate(String fxmlFile) throws IOException {
-        Parent root = FXMLLoader.load(NavigationManager.class.getResource("/com/aa/designmyexperience/" + fxmlFile));
-        primaryStage.getScene().setRoot(root);
+        // Load and display the loading screen
+        Parent loadingRoot = FXMLLoader.load(NavigationManager.class.getResource("/com/aa/designmyexperience/loading.fxml"));
+        primaryStage.getScene().setRoot(loadingRoot);
+
+
+        Task<Parent> loadTask = new Task<Parent>() {
+            @Override
+            protected Parent call() throws Exception {
+                return FXMLLoader.load(NavigationManager.class.getResource("/com/aa/designmyexperience/" + fxmlFile));
+            }
+        };
+
+
+        loadTask.setOnSucceeded(event -> {
+            Parent root = loadTask.getValue();
+            primaryStage.getScene().setRoot(root);
+        });
+
+
+        loadTask.setOnFailed(event -> {
+            loadTask.getException().printStackTrace();
+
+        });
+
+
+        new Thread(loadTask).start();
     }
 
     // Set the root

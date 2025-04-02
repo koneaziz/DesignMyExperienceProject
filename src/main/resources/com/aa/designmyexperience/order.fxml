@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane hbarPolicy="NEVER" hmin="1.0" prefHeight="900.0" prefWidth="1600.0" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Controllers.OrderController">
+    <content>
+        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="906.0" prefWidth="1600.0" style="-fx-background-color: #030317;">
+            <children>
+                <HBox prefHeight="89.0" prefWidth="1600.0">
+                    <children>
+                        <AnchorPane prefHeight="154.0" prefWidth="315.0">
+                            <children>
+                                <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButtonOnAction" prefHeight="153.0" prefWidth="330.0" style="-fx-background-color: #030317;">
+                                    <graphic>
+                                        <ImageView fitHeight="148.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../Images/LogoDesignMyExperience.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="151.0" prefWidth="788.0">
+                            <children>
+                                <TextField fx:id="searchField" layoutX="145.0" layoutY="42.0" onAction="#searchButtonOnAction" prefHeight="59.0" prefWidth="582.0" promptText="Search" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white; -fx-background-image: url('/Images/search.png');" stylesheets="@../../../Styles/styles.css">
+                                    <font>
+                                        <Font name="Montserrat Regular" size="20.0" />
+                                    </font>
+                                </TextField>
+                                <Button fx:id="searchButton" layoutX="673.0" layoutY="41.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="60.0" prefWidth="62.0" style="-fx-background-color: #5645ee; -fx-background-radius: 0 10 10 0;" textFill="#5645ee">
+                                    <graphic>
+                                        <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../Images/search.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="154.0" prefWidth="498.0" style="" stylesheets="@../../../Styles/styles.css">
+                            <children>
+                                <ButtonBar fx:id="profileButton" layoutX="136.0" layoutY="-4.0" prefHeight="158.0" prefWidth="340.0" styleClass="profil_pane" stylesheets="@../../../Styles/styles.css">
+                                    <buttons>
+                                        <Button fx:id="profilePageButton" mnemonicParsing="false" onAction="#profilePageButtonOnAction" prefHeight="127.0" prefWidth="398.0" style="-fx-background-color: #030317;">
+                                            <graphic>
+                                                <Label fx:id="lnameLabel" alignment="TOP_LEFT" minWidth="48.0" prefHeight="94.0" prefWidth="223.0" text="Last" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="Montserrat Regular" size="22.0" />
+                                                    </font>
+                                                    <graphic>
+                                                        <Label fx:id="fnameLabel" alignment="CENTER_RIGHT" prefHeight="94.0" prefWidth="157.0" text="First" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="Montserrat Regular" size="22.0" />
+                                                            </font>
+                                                            <graphic>
+                                                                <Circle fx:id="profilPicture" fill="#5645ee" radius="47.0" stroke="BLACK" strokeType="INSIDE" />
+                                                            </graphic>
+                                                        </Label>
+                                                    </graphic>
+                                                </Label>
+                                            </graphic>
+                                        </Button>
+                                    </buttons></ButtonBar>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </HBox>
+                <HBox>
+                    <children>
+                        <AnchorPane prefHeight="749.0" prefWidth="1004.0">
+                            <children>
+                                <Label fx:id="ActivityTitleLabel" layoutX="61.0" layoutY="81.0" prefHeight="72.0" prefWidth="596.0" text="Activity Title" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="Montserrat Black" size="35.0" />
+                                    </font>
+                                </Label>
+                        <Label layoutX="70.0" layoutY="242.0" prefHeight="37.0" prefWidth="157.0" text="Booking date :" textAlignment="CENTER" textFill="GREY">
+                           <font>
+                              <Font name="Montserrat Regular" size="20.0" />
+                           </font>
+                        </Label>
+                                <Label fx:id="BookingDateLabel" layoutX="233.0" layoutY="242.0" prefHeight="37.0" prefWidth="145.0" text="2025-05-22" textAlignment="CENTER" textFill="GREY" AnchorPane.leftAnchor="233.0" AnchorPane.topAnchor="242.0">
+                                    <font>
+                                        <Font name="Montserrat Regular" size="20.0" />
+                                    </font>
+                                </Label>
+                        <Label layoutX="70.0" layoutY="293.0" prefHeight="37.0" prefWidth="196.0" text="Number of tickets :" textAlignment="CENTER" textFill="GREY">
+                           <font>
+                              <Font name="Montserrat Regular" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="NbTicketLabel" layoutX="282.0" layoutY="293.0" prefHeight="37.0" prefWidth="145.0" text="5" textAlignment="CENTER" textFill="GREY">
+                           <font>
+                              <Font name="Montserrat Regular" size="20.0" />
+                           </font>
+                        </Label>
+                                <Label layoutX="80.0" layoutY="427.0" prefHeight="63.0" prefWidth="141.0" text="Subtotal :" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="80.0">
+                                    <font>
+                                        <Font name="Montserrat Black" size="20.0" />
+                                    </font>
+                                </Label>
+                                <Line endX="980.5255737304688" endY="27.31622314453125" layoutX="-132.0" layoutY="3.0" startX="980.5255126953125" startY="705.1970825195312" stroke="WHITE" strokeLineCap="ROUND" />
+                        <Label fx:id="LocationLabel" layoutX="63.0" layoutY="140.0" prefHeight="37.0" prefWidth="157.0" text="Location" textAlignment="CENTER" textFill="GREY">
+                           <font>
+                              <Font name="Montserrat Regular" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="72.0" layoutY="343.0" prefHeight="37.0" prefWidth="73.0" text="Price :" textAlignment="CENTER" textFill="GREY">
+                           <font>
+                              <Font name="Montserrat Regular" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="PriceLabel" layoutX="144.0" layoutY="343.0" prefHeight="37.0" prefWidth="190.0" text="150.00 £" textAlignment="CENTER" textFill="GREY">
+                           <font>
+                              <Font name="Montserrat Regular" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="SubTotalLabel" layoutX="206.0" layoutY="426.0" prefHeight="63.0" prefWidth="217.0" text="250.00 £" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Montserrat Black" size="20.0" />
+                           </font>
+                        </Label>
+                        <Line endX="1302.989501953125" endY="27.31622314453125" layoutX="-509.0" layoutY="473.0" startX="570.9365234375" startY="27.31622314453125" stroke="WHITE" strokeLineCap="ROUND" />
+                        <Label layoutX="77.0" layoutY="505.0" prefHeight="63.0" prefWidth="141.0" text="Discount :" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Montserrat Black" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="DiscountLabel" layoutX="203.0" layoutY="504.0" prefHeight="63.0" prefWidth="96.0" text="0.00 %" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Montserrat Black" size="20.0" />
+                           </font>
+                        </Label>
+                        <Line endX="1302.989501953125" endY="27.31622314453125" layoutX="-509.0" layoutY="549.0" startX="570.9365234375" startY="27.31622314453125" stroke="WHITE" strokeLineCap="ROUND" />
+                        <Label layoutX="81.0" layoutY="610.0" prefHeight="63.0" prefWidth="175.0" text="Total :" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Montserrat Black" size="45.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="TotalLabel" layoutX="276.0" layoutY="611.0" prefHeight="63.0" prefWidth="303.0" text="250.00 £" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Montserrat Black" size="45.0" />
+                           </font>
+                        </Label>
+                        <Hyperlink fx:id="BackButton" layoutX="70.0" layoutY="22.0" onAction="#backButtonOnAction" text="Back" textFill="GREY">
+                           <font>
+                              <Font name="Montserrat Regular" size="20.0" />
+                           </font>
+                        </Hyperlink>
+                        <FontAwesomeIconView fill="GREY" glyphName="ARROW_LEFT" layoutX="38.0" layoutY="50.0" size="30" wrappingWidth="53.91668701171875" />
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="749.0" prefWidth="748.0">
+                            <children>
+                                <Label layoutX="43.0" layoutY="17.0" prefHeight="63.0" prefWidth="141.0" text="Tickets" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="Montserrat Black" size="20.0" />
+                                    </font>
+                                </Label>
+                                <Label alignment="CENTER" layoutX="164.0" layoutY="81.0" prefHeight="63.0" prefWidth="283.0" text="Pay" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="Montserrat Black" size="28.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="84.0" layoutY="162.0" prefHeight="32.0" prefWidth="148.0" text="Email" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="Montserrat Black" size="14.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="82.0" layoutY="264.0" prefHeight="32.0" prefWidth="148.0" text="Name on Card" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="Montserrat Black" size="14.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="bookButton" layoutX="121.0" layoutY="645.0" mnemonicParsing="false" onAction="#handleOrder" prefHeight="49.0" prefWidth="364.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to right, #05D6D9 , #F907FC);" text="Pay" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="Montserrat Regular" size="20.0" />
+                                    </font>
+                                </Button>
+                                <TextField fx:id="emailField" layoutX="78.0" layoutY="196.0" prefHeight="42.0" prefWidth="441.0" promptText="Email" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white;" stylesheets="@../../../Styles/styles.css">
+                                    <font>
+                                        <Font name="Montserrat Regular" size="20.0" />
+                                    </font>
+                                </TextField>
+                                <Label layoutX="84.0" layoutY="362.0" prefHeight="32.0" prefWidth="151.0" text="Card Informations" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="Montserrat Black" size="14.0" />
+                                    </font>
+                                </Label>
+                        <TextField fx:id="cardNameField" layoutX="77.0" layoutY="299.0" prefHeight="42.0" prefWidth="441.0" promptText="Name on Card" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white;" stylesheets="@../../../Styles/styles.css">
+                           <font>
+                              <Font name="Montserrat Regular" size="20.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="cardNumberField" layoutX="75.0" layoutY="396.0" prefHeight="42.0" prefWidth="441.0" promptText="1234 1234 1234 1234" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white;" stylesheets="@../../../Styles/styles.css">
+                           <font>
+                              <Font name="Montserrat Regular" size="20.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="monthYearField" layoutX="75.0" layoutY="446.0" prefHeight="42.0" prefWidth="222.0" promptText="MM/YY" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white;" stylesheets="@../../../Styles/styles.css">
+                           <font>
+                              <Font name="Montserrat Regular" size="20.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="CvvField" layoutX="302.0" layoutY="445.0" prefHeight="42.0" prefWidth="214.0" promptText="CVV" style="-fx-background-radius: 10px; -fx-padding: 5 0 5 20; -fx-background-color: #1f2229; -fx-border-color: gray; -fx-border-radius: 10px; -fx-text-fill: white;" stylesheets="@../../../Styles/styles.css">
+                           <font>
+                              <Font name="Montserrat Regular" size="20.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="paypalButton" layoutX="151.0" layoutY="545.0" prefHeight="43.0" prefWidth="294.0" style="-fx-background-color: linear-gradient(to right, #0070BA, #1546A0); -fx-text-fill: white; -fx-font-size: 18px; -fx-padding: 10;" text="Pay with PayPal" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>

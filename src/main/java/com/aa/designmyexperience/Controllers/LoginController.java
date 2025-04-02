@@ -3,21 +3,24 @@ package com.aa.designmyexperience.Controllers;
 import com.aa.designmyexperience.Models.Session;
 import com.aa.designmyexperience.Models.User;
 import com.aa.designmyexperience.Util.DBconnect;
+import com.aa.designmyexperience.Util.EmailSender;
 import com.aa.designmyexperience.Util.NavigationManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.text.Text;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Optional;
+
+import static com.aa.designmyexperience.Util.DBconnect.showAlert;
 
 public class LoginController {
 
@@ -48,6 +51,7 @@ public class LoginController {
         }
     }
 
+    /* Validate the login of the user */
     public void validateLogin() {
         String email = emailField.getText();
         String password = passwordField.getText();
@@ -81,6 +85,44 @@ public class LoginController {
                 NavigationManager.navigate("signup.fxml");
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        });
+    }
+
+    /* Prompt the user to get his password */
+    public void handleForgotPassword() {
+
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Password Recovery");
+        dialog.setHeaderText("Forgot Password");
+        dialog.setContentText("Please enter your email:");
+
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(email -> {
+            email = email.trim();
+            if (email.isEmpty()) {
+                showAlert("Error", "Please enter a valid email address.");
+                return;
+            }
+
+            try {
+                User user = DBconnect.getUser(email);
+
+                if (user != null) {
+                    String subject = "Your Password Recovery";
+                    String body =
+                            "Dear" + user.getFirstName() + ",\n" +
+                            "Your password is: " + user.getPassword() + "\n" +
+                            "Please change your password after logging in." +
+                            "\n\n" +
+                            "DesignMyExperience";
+                    EmailSender.sendEmail(email, subject, body);
+                    showAlert("Success", "Your password has been sent to your email.");
+                } else {
+                    showAlert("Error", "Email not found in our records.");
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
         });
     }

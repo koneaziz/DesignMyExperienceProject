@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <ScrollPane hbarPolicy="NEVER" hmax="0.0" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aa.designmyexperience.Controllers.AddEventController">
    <content>
       <BorderPane prefHeight="1126.0" prefWidth="1600.0" style="-fx-background-color: #030317;">
@@ -60,10 +59,27 @@
                       <TextArea fx:id="descriptionField" prefHeight="100" prefWidth="350" style="-fx-font-size: 16px; -fx-padding: 5;" />
                   <Label layoutX="30.0" layoutY="223.0" style="-fx-text-fill: white; -fx-font-size: 18px;" text="Category" />
                   <TextField fx:id="categoryField" layoutX="30.0" layoutY="68.0" prefWidth="350" style="-fx-font-size: 16px; -fx-padding: 5;" />
-      
-                      <!-- Event Date -->
-                      <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Date" />
-                  <DatePicker fx:id="eventDateField" />
+                  <HBox spacing="40.0">
+                     <children>
+                        <VBox>
+                           <children>
+                  
+                                  <!-- Event Date -->
+                                  <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Start Date" />
+                              <DatePicker fx:id="eventDateField" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="End Date" />
+                              <DatePicker fx:id="eventEndDateField" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
       
                       <!-- Location -->
                       <Label style="-fx-text-fill: white; -fx-font-size: 18px;" text="Location" />

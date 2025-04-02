@@ -50,7 +50,7 @@
 
                 <!-- Section des événements -->
                 <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" text="Activities" />
-                <ListView fx:id="eventList" prefHeight="664.0" prefWidth="725.0" style="-fx-background-color: #111126; -fx-text-fill: white;" />
+                <ListView fx:id="eventsListView" prefHeight="664.0" prefWidth="725.0" style="-fx-background-color: #111126; -fx-text-fill: white;" />
 
             </VBox>
         </StackPane>
@@ -70,7 +70,7 @@
                         <Font name="Montserrat Black" size="33.0" />
                      </font>
                   </Label>
-                  <Label fx:id="companyDescription" layoutX="271.0" layoutY="90.0" prefHeight="31.0" prefWidth="224.0" text="Description" textFill="GREY" AnchorPane.leftAnchor="271.0">
+                  <Label fx:id="companyDescription" layoutX="271.0" layoutY="90.0" prefHeight="31.0" prefWidth="224.0" textFill="GREY" AnchorPane.leftAnchor="271.0">
                      <font>
                         <Font name="Montserrat Medium" size="22.0" />
                      </font>
@@ -95,7 +95,7 @@
                         <Font name="Montserrat Regular" size="44.0" />
                      </font>
                   </Label>
-                  <BarChart layoutX="-1.0" layoutY="57.0" prefHeight="315.0" prefWidth="400.0" style="-fx-background-color: #030317;">
+                  <BarChart fx:id="revenueBarChart" layoutX="-1.0" layoutY="57.0" prefHeight="315.0" prefWidth="499.0" style="-fx-background-color: #030317;">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -107,14 +107,13 @@
                       <!-- Boutons de gestion -->
                       <HBox alignment="CENTER" layoutX="201.0" layoutY="423.0" prefHeight="44.0" prefWidth="432.0" spacing="15.0" AnchorPane.leftAnchor="201.0" AnchorPane.topAnchor="423.0">
                           <Button fx:id="addEventButton" onAction="#addEventOnAction" style="-fx-background-color: #05D6D9; -fx-text-fill: white; -fx-font-size: 16px;" text="Add an event" />
-                          <Button fx:id="editEventButton" style="-fx-background-color: #F907FC; -fx-text-fill: white; -fx-font-size: 16px;" text="Modify an event" />
-                          <Button fx:id="deleteEventButton" style="-fx-background-color: #FF3B30; -fx-text-fill: white; -fx-font-size: 16px;" text="Delete an event" />
+                     <Button fx:id="addEventButton1" layoutX="172.0" layoutY="17.0" onAction="#editEventOnAction" style="-fx-background-color: #01D8A9; -fx-text-fill: white; -fx-font-size: 16px;" text="Modify Profile" />
                       </HBox>
       
                       <!-- Gestion des réservations et promotions -->
                       <HBox alignment="CENTER" layoutX="262.0" layoutY="483.0" spacing="15.0" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="483.0">
-                          <Button fx:id="manageBookingsButton" style="-fx-background-color: #05D6D9; -fx-text-fill: white; -fx-font-size: 16px;" text="Manage reservations" />
-                          <Button fx:id="managePromotionsButton" style="-fx-background-color: #F907FC; -fx-text-fill: white; -fx-font-size: 16px;" text="Manage discounts" />
+                          <Button fx:id="manageBookingsButton" onAction="#reservationOnAction" style="-fx-background-color: #07A6D8; -fx-text-fill: white; -fx-font-size: 16px;" text="Manage reservations" />
+                          <Button fx:id="managePromotionsButton" onAction="#discountOnAction" style="-fx-background-color: #F907FC; -fx-text-fill: white; -fx-font-size: 16px;" text="Manage discounts" />
                       </HBox>
                   <Label layoutX="369.0" layoutY="374.0" prefHeight="41.0" prefWidth="101.0" text="Actions" textFill="WHITE">
                      <font>
@@ -122,12 +121,12 @@
                      </font>
                   </Label>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28285e" height="122.0" layoutX="523.0" layoutY="229.0" stroke="#28285e" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="10.0" width="261.0" />
-                  <Label alignment="CENTER" layoutX="547.0" layoutY="228.0" prefHeight="41.0" prefWidth="216.0" text="Revenue  (£)" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="547.0" layoutY="228.0" prefHeight="41.0" prefWidth="216.0" text="Revenue" textFill="WHITE">
                      <font>
                         <Font name="Montserrat Regular" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="revenueLabel" alignment="CENTER" layoutX="519.0" layoutY="278.0" prefHeight="55.0" prefWidth="265.0" text="5" textFill="WHITE">
+                  <Label fx:id="revenueLabel" alignment="CENTER" layoutX="519.0" layoutY="278.0" prefHeight="55.0" prefWidth="265.0" text="5 £" textFill="WHITE">
                      <font>
                         <Font name="Montserrat Regular" size="44.0" />
                      </font>

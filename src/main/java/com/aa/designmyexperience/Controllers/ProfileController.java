@@ -56,6 +56,16 @@ public class ProfileController {
 
     }
 
+    @FXML
+    private void modifyProfile(ActionEvent event) throws IOException {
+        NavigationManager.navigate("edit-user-info.fxml");
+    }
+
+    @FXML
+    private void viewBookingHistory(ActionEvent event) throws IOException {
+        NavigationManager.navigate("booking-history.fxml");
+    }
+
     /* Create a logout from the current session */
     @FXML
     private void logoutOnAction(ActionEvent e) throws IOException {

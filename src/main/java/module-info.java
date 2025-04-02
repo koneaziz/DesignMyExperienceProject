@@ -2,9 +2,9 @@ module com.aa.designmyexperience {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires javafx.web;
     requires java.desktop;
     requires java.net.http;
+    requires java.mail;
 
 
     opens com.aa.designmyexperience to javafx.fxml;
